@@ -668,29 +668,3 @@ p {
         max-height:75vh;
     }
 }
-
-/* Celulares */
-@media (max-width: 768px){
-
-    .popup{
-        padding:10px;
-    }
-
-    .popup-content{
-        width:95vw;
-        max-width:320px;
-    }
-
-    .popup-image{
-        max-height:65vh;
-        border-radius:10px;
-    }
-
-    .popup-close{
-        width:34px;
-        height:34px;
-        font-size:22px;
-        top:-8px;
-        right:-8px;
-    }
-}
