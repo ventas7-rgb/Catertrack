@@ -17,3 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+window.addEventListener("load", () => {
+
+    const popup = document.getElementById("promoPopup");
+    const cerrar = document.getElementById("cerrarPopup");
+
+    popup.style.display = "flex";
+
+    cerrar.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+        }
+    });
+
+});
