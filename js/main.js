@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 window.addEventListener("load", () => {
-
-    if (window.innerWidth <= 768) {
-        return;
-    }
-
     const popup = document.getElementById("promoPopup");
     const cerrar = document.getElementById("cerrarPopup");
+    const shouldShowPopup = window.matchMedia("(min-width: 768px)").matches;
+
+    if (!popup || !cerrar || !shouldShowPopup) {
+        popup?.style.setProperty("display", "none");
+        return;
+    }
 
     popup.style.display = "flex";
 
@@ -37,5 +38,4 @@ window.addEventListener("load", () => {
             popup.style.display = "none";
         }
     });
-
 });
