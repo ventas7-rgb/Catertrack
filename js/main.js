@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 window.addEventListener("load", () => {
 
+    if (window.innerWidth <= 768) {
+        return;
+    }
+
     const popup = document.getElementById("promoPopup");
     const cerrar = document.getElementById("cerrarPopup");
 
