@@ -169,7 +169,7 @@
                 <div class="product-card__body">
                   <h3>Herramientas de corte</h3>
                   <p>Componentes resistentes para trabajos de alto desgaste y mayor productividad.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/corte.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -179,7 +179,7 @@
                 <div class="product-card__body">
                   <h3>Repuestos de motor</h3>
                   <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/motor.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -189,7 +189,7 @@
                 <div class="product-card__body">
                   <h3>Lubricación</h3>
                   <p>Kits y soluciones de lubricación para el mantenimiento continuo de sus equipos.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/lubri.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -199,7 +199,7 @@
                 <div class="product-card__body">
                   <h3>Strips</h3>
                   <p>Elementos duraderos para aplicaciones de corte, desgaste y protección de equipos.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/strip.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -209,7 +209,7 @@
                 <div class="product-card__body">
                   <h3>Tren de rodaje</h3>
                   <p>Componentes robustos que garantizan estabilidad, durabilidad y mejor rendimiento.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/rodaje.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -219,7 +219,7 @@
                 <div class="product-card__body">
                   <h3>Repuestos generales</h3>
                   <p>Amplio inventario para atender emergencias y mantener la operación en marcha.</p>
-                  <a href="#advisor-title" class="text-link">Solicitar cotización</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/general.pdf'); return false;">Más información</a>
                 </div>
               </div>
             </article>
@@ -355,5 +355,12 @@
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/whatsapp.js"></script>
-  </body>
+    <script src="js/pdf.js"></script>
+<div id="pdfModal" class="pdf-modal">
+    <div class="pdf-modal-content">
+        <button class="cerrar-pdf" onclick="cerrarPDF()">✕</button>
+        <iframe id="visorPDF"></iframe>
+    </div>
+</div>
+</body>
 </html>
