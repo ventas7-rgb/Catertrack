@@ -17,25 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+
 window.addEventListener("load", () => {
     const popup = document.getElementById("promoPopup");
     const cerrar = document.getElementById("cerrarPopup");
     const shouldShowPopup = window.matchMedia("(min-width: 768px)").matches;
 
-    if (!popup || !cerrar || !shouldShowPopup) {
-        popup?.style.setProperty("display", "none");
-        return;
-    }
+    if (!popup || !cerrar || !shouldShowPopup) return;
 
-    popup.style.display = "flex";
+    popup.classList.add("active");
 
     cerrar.addEventListener("click", () => {
-        popup.style.display = "none";
+        popup.classList.remove("active");
     });
 
     popup.addEventListener("click", (e) => {
         if (e.target === popup) {
-            popup.style.display = "none";
+            popup.classList.remove("active");
         }
     });
 });
