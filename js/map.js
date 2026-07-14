@@ -1,12 +1,12 @@
 // Inicializa mapa usando Leaflet + OpenStreetMap
 document.addEventListener('DOMContentLoaded', function () {
   const locations = {
-    'Bogotá': [4.599306, -74.096096],
-    'Medellín': [6.2442, -75.5812],
+    'Bogotá': [4.599380575422542, -74.09611760567681],
+    'Medellín': [6.237979365352332, -75.57269589031674],
     'Barranquilla': [10.9685, -74.7813],
-    'Neiva': [2.9389, -75.2803],
-    'Meta': [4.1420, -73.6269],
-    'Yopal': [5.3370, -72.3970]
+    'Neiva': [2.941108932309823, -75.30217677685152],
+    'Meta': [4.139324012852299, -73.63200396335262],
+    'Yopal': [5.33204239565956, -72.40632920567054]
   };
 
   // Centrar en Colombia
