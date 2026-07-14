@@ -32,16 +32,13 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <style>
-      .map-container { height: 420px; min-height: 300px; width: 100%; border-radius: 8px; }
-      .sucursales-list .sucursal-item { cursor: pointer; color: #0b1f3a; text-decoration: underline; }
-      .sucursales-list .sucursal-item:focus { outline: none; }
+      .map-container { height: 420px; min-height: 300px; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 8px; }
     </style>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   </head>
   <body>
-      <a class="skip-link" href="#main-content">Saltar al contenido</a>
-    <div id="promoPopup" class="popup">
+      <div id="promoPopup" class="popup">
     <div class="popup-content">
 
         <button class="popup-close" id="cerrarPopup">&times;</button>
@@ -124,23 +121,11 @@
               <p class="section__eyebrow">Nuestras sucursales</p>
               <h2>Encuentra nuestras oficinas en Colombia</h2>
             </div>
-            <div class="row g-4 align-items-start">
-              <div class="col-lg-7" data-aos="fade-right">
+            <div class="row g-4">
+              <div class="col-12 d-flex justify-content-center" data-aos="fade-right">
                 <div id="map" class="map-container" role="region" aria-label="Mapa de sucursales"></div>
               </div>
-              <div class="col-lg-5" data-aos="fade-left">
-                <p>Haga clic en una sucursal para centrar el mapa:</p>
-                <ul class="sucursales-list list-unstyled">
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="4.7110" data-lng="-74.0721">Bogotá</button></li>
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="6.2442" data-lng="-75.5812">Medellín</button></li>
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="2.9389" data-lng="-75.2803">Neiva</button></li>
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="5.3370" data-lng="-72.3970">Yopal</button></li>
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="4.1420" data-lng="-73.6269">Villavicencio (Meta)</button></li>
-                  <li><button class="btn btn-link p-0 sucursal-item" data-lat="10.9685" data-lng="-74.7813">Barranquilla</button></li>
-                </ul>
-              </div>
             </div>
-          </div>
         </section>
 
       <section class="about section" id="nosotros">

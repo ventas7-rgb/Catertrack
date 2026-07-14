@@ -29,16 +29,4 @@ document.addEventListener('DOMContentLoaded', function () {
     const marker = L.marker(coords, { icon: ubicIcon }).addTo(map).bindPopup(`<strong>${name}</strong>`);
     markers[name] = marker;
   });
-
-  // Conectar la lista de sucursales
-  document.querySelectorAll('.sucursal-item').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const lat = parseFloat(btn.dataset.lat);
-      const lng = parseFloat(btn.dataset.lng);
-      const name = btn.textContent.trim();
-      map.setView([lat, lng], 12, { animate: true });
-      const marker = markers[name] || null;
-      if (marker) marker.openPopup();
-    });
-  });
 });
