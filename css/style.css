@@ -599,7 +599,7 @@ p {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-.popup {
+.popup{
     display: none;
     position: fixed;
     inset: 0;
@@ -610,8 +610,18 @@ p {
     align-items: center;
 
     padding: 20px;
+
+    animation: fondoFade .35s ease;
 }
 
+@keyframes fondoFade{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
 .popup-content{
     position: relative;
     width: min(90vw, 700px);
@@ -620,53 +630,58 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    animation: popupEntrada .45s cubic-bezier(.22,1,.36,1);
 }
 
-
-.popup-image{
-    width: 100%;
-    height: auto;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 12px;
-    display: block;
-}
-
-.popup-close{
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-@keyframes aparecer{
-    from{
-        transform:scale(.8);
+@keyframes popupEntrada{
+    0%{
         opacity:0;
+        transform:scale(.75) translateY(40px);
     }
-    to{
-        transform:scale(1);
+
+    60%{
         opacity:1;
+        transform:scale(1.03) translateY(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
     }
 }
-/* Tablets */
-@media (min-width:769px) and (max-width:1024px){
+.popup-image{
+    width:100%;
+    height:auto;
+    max-height:90vh;
+    object-fit:contain;
+    border-radius:12px;
+    display:block;
+    transition:transform .35s ease;
+}
 
-    .popup-content{
-        width:80vw;
-        max-width:500px;
-    }
+.popup-image:hover{
+    transform:scale(1.02);
+}
+.popup-close{
+    position:absolute;
+    top:-15px;
+    right:-15px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    font-size:28px;
+    cursor:pointer;
+    z-index:10;
+    transition:.25s ease;
+}
 
-    .popup-image{
-        max-height:75vh;
-    }
+.popup-close:hover{
+    transform:rotate(90deg) scale(1.1);
+    background:#f44336;
+    color:#fff;
 }
 /* ===== Modal PDF ===== */
 
