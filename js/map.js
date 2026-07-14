@@ -9,8 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
     'Yopal': [5.33204239565956, -72.40632920567054]
   };
 
-  // Centrar en Colombia
-  const map = L.map('map', { scrollWheelZoom: true }).setView([4.5, -74.0], 6);
+  // Centrar en Colombia y limitar el área máxima de navegación
+  const colombiaBounds = [
+    [ -4.3000, -81.8000 ],
+    [ 13.5000, -66.8000 ]
+  ];
+
+  const map = L.map('map', {
+    scrollWheelZoom: true,
+    minZoom: 5,
+    maxZoom: 12,
+    maxBounds: colombiaBounds,
+    maxBoundsViscosity: 0.9
+  }).setView([4.5, -74.0], 6);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
