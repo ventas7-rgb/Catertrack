@@ -686,36 +686,42 @@ p {
 }
 
 .popup-close{
-    position:absolute;
-    top:-18px;
-    right:-18px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
 
-    width:46px;
-    height:46px;
+    width: 38px;
+    height: 38px;
 
-    border:none;
-    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background:#fff;
-    color:#222;
+    border: none;
+    border-radius: 50%;
 
-    font-size:30px;
-    font-weight:bold;
+    background: rgba(255,255,255,.95);
+    color: #333;
 
-    cursor:pointer;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    cursor: pointer;
 
-    transition:
-        transform .3s ease,
-        background .3s ease,
-        color .3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+
+    transition: all .25s ease;
 }
 
 .popup-close:hover{
-    background:#ff3b30;
-    color:#fff;
-    transform:rotate(90deg) scale(1.12);
+    background: #e53935;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.popup-close:active{
+    transform: scale(.95);
 }
 /* ===== Modal PDF ===== */
 
