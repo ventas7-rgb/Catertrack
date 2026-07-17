@@ -3,13 +3,11 @@
 }
 
 @media (max-width: 991px) {
-  .header__cta {
-    display: none;
-  }
-
   .header__menu {
-    padding-top: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
+    padding: 0.6rem 0.2rem 0.2rem;
   }
 
   .header__menu .nav-item {
@@ -19,13 +17,21 @@
   .header__menu .nav-link {
     display: block;
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 0.85rem 0.9rem;
     margin: 0;
+  }
+
+  .navbar-collapse {
+    margin-top: 0.6rem;
+    border: 1px solid rgba(229, 229, 229, 0.95);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 24px rgba(11, 31, 58, 0.08);
   }
 
   .hero {
     min-height: auto;
-    padding: 4.5rem 0;
+    padding: 4.2rem 0;
   }
 
   .hero__actions {
@@ -44,21 +50,27 @@
 
 @media (max-width: 767px) {
   .section {
-    padding: 3.5rem 0;
+    padding: 4.8rem 0;
+  }
+
+  .section__heading {
+    margin-bottom: 2.2rem;
   }
 
   .hero__content {
-    padding: 2.5rem 0;
+    padding: 2.4rem 0 1.6rem;
   }
 
   .hero__actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.8rem;
   }
 
   .hero__btn {
     width: 100%;
     text-align: center;
+    min-height: 54px;
   }
 
   .hero__image-card img {
@@ -87,14 +99,18 @@
     height: 180px;
   }
 
-  .advisor__contact-list {
-    gap: 0.75rem;
+  .advisor__contact-list a {
+    border-radius: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .header .container {
     padding: 0.75rem 0.75rem;
+  }
+
+  .header__logo-image {
+    max-height: 92px;
   }
 
   h1 {
@@ -104,6 +120,12 @@
   .hero__highlights {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .hero__highlights li {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .hero__text {
@@ -122,23 +144,23 @@
 
   .whatsapp-float,
   .back-to-top {
-    width: 44px;
-    height: 44px;
-    left: 0.75rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
   }
 
   .whatsapp-float {
-    bottom: 0.85rem;
-    opacity: 0.92;
+    bottom: 0.9rem;
+    right: 0.9rem;
+    opacity: 0.96;
   }
 
   .back-to-top {
-    bottom: 5.2rem;
-    opacity: 0.92;
+    bottom: 6.1rem;
+    right: 0.9rem;
+    opacity: 0.96;
   }
 
-  /* Evitar desbordamiento horizontal en móviles */
   html, body {
     overflow-x: hidden;
   }
