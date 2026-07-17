@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const loading = document.getElementById('page-loading');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (window.AOS) {
+    window.AOS.init({
+      duration: 700,
+      once: true,
+      easing: 'ease-out-cubic'
+    });
+  }
+
   if (!prefersReducedMotion) {
     document.body.classList.add('has-motion');
   }
@@ -56,69 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.6 });
 
     counters.forEach((counter) => observer.observe(counter));
-  };
-
-  const initHeaderSearch = () => {
-    const searchInput = document.getElementById('productSearch');
-    const resultsPanel = document.getElementById('searchResults');
-
-    if (!searchInput || !resultsPanel) return;
-
-    const catalog = [
-      {
-        reference: '1234789',
-        title: 'Herramientas de corte',
-        description: 'Herramienta premium para desgaste y corte industrial.',
-        availability: 'Disponible'
-      },
-      {
-        reference: '4421001',
-        title: 'Repuestos de motor',
-        description: 'Kit de mantenimiento para sistemas de motor pesado.',
-        availability: 'Disponible'
-      },
-      {
-        reference: '7785420',
-        title: 'Tren de rodaje',
-        description: 'Componente robusto para estabilidad y durabilidad.',
-        availability: 'Disponible'
-      }
-    ];
-
-    const showResults = (query) => {
-      const term = query.trim().toLowerCase();
-      if (!term) {
-        resultsPanel.classList.remove('is-visible');
-        resultsPanel.innerHTML = '';
-        return;
-      }
-
-      const match = catalog.find((item) => {
-        return [item.reference, item.title, item.description].some((value) => value.toLowerCase().includes(term));
-      });
-
-      if (!match) {
-        resultsPanel.innerHTML = '<p>No encontramos coincidencias para esta referencia.</p>';
-        resultsPanel.classList.add('is-visible');
-        return;
-      }
-
-      resultsPanel.innerHTML = `
-        <strong>${match.reference}</strong>
-        <p>${match.title}</p>
-        <p>${match.description}</p>
-        <p><strong>Disponibilidad:</strong> ${match.availability}</p>
-      `;
-      resultsPanel.classList.add('is-visible');
-    };
-
-    searchInput.addEventListener('input', (event) => showResults(event.target.value));
-    searchInput.addEventListener('focus', () => showResults(searchInput.value));
-    document.addEventListener('click', (event) => {
-      if (!resultsPanel.contains(event.target) && event.target !== searchInput) {
-        resultsPanel.classList.remove('is-visible');
-      }
-    });
   };
 
   const initBranchDetails = () => {
@@ -229,15 +174,22 @@ document.addEventListener('DOMContentLoaded', () => {
   setHeaderState();
   updateProgress();
   animateCounters();
-  initHeaderSearch();
   initBranchDetails();
   initHeroParallax();
   initLoading();
 
-  window.addEventListener('scroll', () => {
-    setHeaderState();
-    updateProgress();
-  }, { passive: true });
+  let ticking = false;
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        setHeaderState();
+        updateProgress();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
 
+  window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', updateProgress);
 });

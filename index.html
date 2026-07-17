@@ -104,6 +104,9 @@
 
     <main id="main-content">
       <section class="hero" id="inicio">
+        <video class="hero__video" autoplay loop muted playsinline poster="assets/images/fondo.jpg" aria-hidden="true">
+          <source src="assets/videos/exca.mp4" type="video/mp4" />
+        </video>
         <div class="hero__overlay"></div>
         <div class="container hero__content">
           <div class="row align-items-center g-5">
@@ -158,18 +161,7 @@
         <div class="container">
           <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
-              <!-- Cambio de imagen por video en la sección Sobre CaterTrack -->
               <div class="about__media" aria-label="Video institucional de CaterTrack">
-                <video
-                  class="about__media-backdrop"
-                  src="assets/videos/portada.mp4"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="auto"
-                  aria-hidden="true"
-                ></video>
                 <video
                   class="about__image"
                   src="assets/videos/portada.mp4"
@@ -177,7 +169,7 @@
                   muted
                   loop
                   playsinline
-                  preload="auto"
+                  preload="metadata"
                   aria-label="Video institucional de CaterTrack"
                 ></video>
               </div>
@@ -512,8 +504,6 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/whatsapp.js"></script>
 <script src="js/ux.js"></script>
 <!-- Leaflet JS + mapa de sucursales -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
