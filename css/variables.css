@@ -8,6 +8,9 @@
   --color-text: #222222;
   --color-text-muted: #555555;
   --color-border: #E5E5E5;
+  --color-surface: #FFFFFF;
+  --color-surface-strong: #F8FAFF;
+  --color-bg: #F7FBFF;
   --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Open Sans', sans-serif;
   --radius-sm: 10px;
@@ -18,3 +21,4 @@
   --transition: 250ms ease;
   --container-width: 1200px;
 }
+

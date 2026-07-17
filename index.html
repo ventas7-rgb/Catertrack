@@ -30,6 +30,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ux.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <style>
       .map-container { height: 420px; min-height: 300px; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 8px; }
@@ -38,7 +39,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   </head>
   <body>
-      <div id="promoPopup" class="popup">
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="page-loading" id="page-loading" aria-hidden="true">
+      <div class="page-loading__ring"></div>
+    </div>
+
+    <div id="promoPopup" class="popup">
     <div class="popup-content">
 
         <button class="popup-close" id="cerrarPopup">&times;</button>
@@ -62,7 +68,11 @@
             <img src="assets/images/foot.png" alt="CaterTrack logo" class="header__logo-image" />
           </a>
 
-          <div class="d-flex align-items-center ms-auto">
+          <div class="d-flex align-items-center ms-auto header__actions">
+            <label class="header__search" for="productSearch" aria-label="Buscar productos">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="productSearch" type="search" placeholder="Buscar repuesto" />
+            </label>
             <button
               class="navbar-toggler"
               type="button"
@@ -81,10 +91,11 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav header__menu">
               <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#sucursales">Sucursales</a></li>
               <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
               <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
               <li class="nav-item"><a class="nav-link" href="#beneficios">Por qué elegirnos</a></li>
-              <li class="nav-item"><a class="nav-link" href="#sucursales">Sucursales</a></li>
+              <li class="nav-item"><a class="nav-link" href="#trabaja">Trabaja con nosotros</a></li>
             </ul>
           </div>
         </nav>
@@ -131,7 +142,16 @@
               <div class="col-12 d-flex justify-content-center" data-aos="fade-right">
                 <div id="map" class="map-container" role="region" aria-label="Mapa de sucursales"></div>
               </div>
+              <div class="col-12" data-aos="fade-up">
+                <div class="branch-card" id="branchDetails" role="status" aria-live="polite">
+                  <div class="branch-card__icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <p class="branch-card__label">Sucursales activas</p>
+                  <h3>Selecciona una ciudad</h3>
+                  <p>Elige una ubicación del mapa para ver la dirección exacta, horario de atención y contacto directo.</p>
+                </div>
+              </div>
             </div>
+          </div>
         </section>
 
       <section class="about section" id="nosotros">
@@ -179,25 +199,25 @@
           <div class="row g-4 mt-4">
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
               <article class="stat-card">
-                <div class="stat-card__number">+28</div>
+                <div class="stat-card__number" data-counter="28" data-prefix="+">0</div>
                 <h3>Años de Experiencia</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
               <article class="stat-card">
-                <div class="stat-card__number">+25000</div>
+                <div class="stat-card__number" data-counter="25000" data-prefix="+">0</div>
                 <h3>Referencias Disponibles</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
               <article class="stat-card">
-                <div class="stat-card__number">8:00-5:30</div>
+                <div class="stat-card__number" data-counter="8" data-suffix="h">0</div>
                 <h3>Horario Atención</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
               <article class="stat-card">
-                <div class="stat-card__number">Inmediata</div>
+                <div class="stat-card__number" data-counter="1" data-label="Inmediata">0</div>
                 <h3>Entrega Inmediata</h3>
               </article>
             </div>
@@ -212,7 +232,7 @@
             <h2>Soluciones para cada necesidad</h2>
           </div>
           <div class="row g-4">
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100" data-card data-brand="caterpillar" data-category="herramientas" data-availability="disponible">
               <div class="product-card">
                 <img src="assets/images/Corte.png" alt="Herramientas de corte" loading="lazy" />
                 <div class="product-card__body">
@@ -222,7 +242,7 @@
                 </div>
               </div>
             </article>
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
               <div class="product-card">
                 <img src="assets/images/Moto.png" alt="Repuestos de motor" loading="lazy" />
                 <div class="product-card__body">
@@ -232,7 +252,7 @@
                 </div>
               </div>
             </article>
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300" data-card data-brand="caterpillar" data-category="rodaje" data-availability="disponible">
               <div class="product-card">
                 <img src="assets/images/Rodaje.png" alt="Tren de rodaje" loading="lazy" />
                 <div class="product-card__body">
@@ -242,7 +262,7 @@
                 </div>
               </div>
             </article>
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400" data-card data-brand="otros" data-category="herramientas" data-availability="pronto">
               <div class="product-card">
                 <img src="assets/images/Strip.png" alt="Strips" loading="lazy" />
                 <div class="product-card__body">
@@ -252,7 +272,7 @@
                 </div>
               </div>
             </article>
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
                 <img src="assets/images/Lubricacion.png" alt="Lubricación" loading="lazy" />
                 <div class="product-card__body">
@@ -262,7 +282,7 @@
                 </div>
               </div>
             </article>
-            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
               <div class="product-card">
                 <img src="assets/images/Miscelanios.png" alt="Repuestos generales" loading="lazy" />
                 <div class="product-card__body">
@@ -344,7 +364,7 @@
               <img class="advisor__image" src="assets/images/Perfil.png" alt="Foto del asesor virtual" loading="lazy" />
             </div>
             <div class="col-lg-8" data-aos="fade-left">
-              <h3>ASESOR VIRTUAL</h3>
+              <h3 id="advisor-title">ASESOR VIRTUAL</h3>
               <p class="advisor__role">Asesor</p>
               <p>
                 Nuestro equipo está listo para brindarle asesoría personalizada y ayudarle a encontrar el repuesto adecuado para su maquinaria.
@@ -362,7 +382,7 @@
 
     </main>
 
-<footer class="footer">
+<footer class="footer" id="trabaja">
 
   <div class="container">
 
@@ -494,6 +514,7 @@
 <script src="js/main.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/whatsapp.js"></script>
+<script src="js/ux.js"></script>
 <!-- Leaflet JS + mapa de sucursales -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/map.js"></script>

@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const markers = {};
   Object.entries(locations).forEach(([name, coords]) => {
     const marker = L.marker(coords, { icon: ubicIcon }).addTo(map).bindPopup(`<strong>${name}</strong>`);
+    marker.on('click', () => {
+      window.dispatchEvent(new CustomEvent('city-selected', { detail: { city: name } }));
+    });
     markers[name] = marker;
   });
 });

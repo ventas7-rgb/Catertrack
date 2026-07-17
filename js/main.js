@@ -41,18 +41,26 @@ window.addEventListener('load', () => {
   const popup = document.getElementById('promoPopup');
   const cerrar = document.getElementById('cerrarPopup');
   const shouldShowPopup = window.matchMedia('(min-width: 768px)').matches;
+  const storageKey = 'catertrack-popup-dismissed-until';
 
   if (!popup || !cerrar || !shouldShowPopup) return;
+
+  const dismissedUntil = Number(localStorage.getItem(storageKey) || 0);
+  const now = Date.now();
+
+  if (dismissedUntil > now) return;
 
   popup.classList.add('active');
 
   cerrar.addEventListener('click', () => {
     popup.classList.remove('active');
+    localStorage.setItem(storageKey, String(Date.now() + 7 * 24 * 60 * 60 * 1000));
   });
 
   popup.addEventListener('click', (event) => {
     if (event.target === popup) {
       popup.classList.remove('active');
+      localStorage.setItem(storageKey, String(Date.now() + 7 * 24 * 60 * 60 * 1000));
     }
   });
 });
