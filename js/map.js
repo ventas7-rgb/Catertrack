@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const map = L.map('map', {
     scrollWheelZoom: true,
-    minZoom: 5,
-    maxZoom: 12,
+    minZoom: 6,
+    maxZoom: 11,
     maxBounds: colombiaBounds,
     maxBoundsViscosity: 0.9
   }).setView([4.5, -74.0], 6);
