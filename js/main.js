@@ -24,6 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
     button.style.bottom = 'auto';
   };
 
+  const resetPositions = () => {
+    if (backToTop) {
+      backToTop.style.left = 'auto';
+      backToTop.style.top = 'auto';
+      backToTop.style.right = '1.25rem';
+      backToTop.style.bottom = '7rem';
+      backToTop.style.bottom = '7rem';
+    }
+
+    if (whatsappButton) {
+      whatsappButton.style.left = 'auto';
+      whatsappButton.style.top = 'auto';
+      whatsappButton.style.right = '1.25rem';
+      whatsappButton.style.bottom = '1.25rem';
+    }
+
+    localStorage.removeItem(storageKey);
+  };
+
   const savePositions = () => {
     const positions = {};
 
@@ -110,10 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   toggleBackToTop();
-  restorePositions();
+  resetPositions();
   floatButtons.forEach(initDrag);
   window.addEventListener('scroll', toggleBackToTop, { passive: true });
-  window.addEventListener('resize', restorePositions);
+  window.addEventListener('resize', resetPositions);
 
   backToTop?.addEventListener('click', (event) => {
     event.preventDefault();
