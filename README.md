@@ -12,3 +12,4 @@ Landing page corporativa para CaterTrack, desarrollada con HTML5 semántico, CSS
 ## Vista previa
 
 Abrir index.html en un navegador o servir la carpeta con un servidor estático.
+Julian Montealegre no sabe desarrollo web pero tiene a Copilot, gracias.
