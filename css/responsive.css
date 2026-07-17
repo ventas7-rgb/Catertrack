@@ -78,6 +78,24 @@
     height: auto;
   }
 
+  .about__media {
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .about__media-backdrop {
+    display: none;
+  }
+
+  .about__image {
+    width: 100%;
+    max-height: none;
+    object-fit: contain;
+    box-shadow: var(--shadow-card);
+  }
+
   .about__image,
   .product-card img {
     height: auto;

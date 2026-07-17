@@ -324,9 +324,40 @@ p {
 }
 
 /* About */
+.about__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11, 31, 58, 0.14), rgba(11, 31, 58, 0.03));
+  box-shadow: var(--shadow-card);
+}
+
+.about__media-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(22px) brightness(0.9);
+  transform: scale(1.05);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .about__image {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  max-height: 100%;
+  object-fit: contain;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
+  background: var(--color-primary);
 }
 
 .stat-card,
