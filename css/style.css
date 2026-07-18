@@ -319,7 +319,7 @@ p {
 
 .hero__image-card img {
   border-radius: 1.2rem;
-  min-height: 420px;
+  min-height: 300px;
   object-fit: cover;
 }
 
