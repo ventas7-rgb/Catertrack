@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroContent = document.querySelector('.hero__content');
   const progressBar = document.querySelector('.scroll-progress');
   const loading = document.getElementById('page-loading');
+  const heroVideo = document.querySelector('.hero__video');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (window.AOS) {
@@ -160,15 +161,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initHeroVideo = () => {
+    if (!heroVideo) return;
+
+    if (prefersReducedMotion) {
+      heroVideo.pause();
+      return;
+    }
+
+    heroVideo.playbackRate = 1.5;
+    heroVideo.addEventListener('loadedmetadata', () => {
+      heroVideo.playbackRate = 1.5;
+    }, { once: true });
+  };
+
   const initLoading = () => {
-    window.addEventListener('load', () => {
+    const revealPage = () => {
       if (loading) {
         loading.classList.add('is-hidden');
       }
       if (heroContent) {
         heroContent.classList.add('is-ready');
       }
-    });
+    };
+
+    requestAnimationFrame(revealPage);
   };
 
   setHeaderState();
@@ -176,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCounters();
   initBranchDetails();
   initHeroParallax();
+  initHeroVideo();
   initLoading();
 
   let ticking = false;

@@ -30,7 +30,7 @@ section {
 
 .container {
   max-width: var(--container-width);
-  padding-inline: 1rem;
+  padding: 0.05rem 1rem;
 }
 
 .skip-link {
@@ -111,7 +111,7 @@ p {
 }
 
 .header .container {
-  padding: 0.85rem 1rem;
+  padding: 0.15rem 1rem;
 }
 
 .header__logo {
@@ -129,7 +129,7 @@ p {
 }
 
 .header__logo-image {
-  max-height: 120px;
+  max-height: 95px;
   width: auto;
   display: block;
 }
@@ -168,7 +168,7 @@ p {
 .header__menu .nav-link {
   position: relative;
   margin: 0 0.25rem;
-  padding: 0.7rem 0.9rem;
+  padding: .45rem .8rem;
   font-weight: 600;
   color: var(--color-primary);
   border-radius: 999px;

@@ -37,7 +37,7 @@ body::before {
   place-items: center;
   z-index: 1200;
   opacity: 1;
-  transition: opacity 360ms ease, visibility 360ms ease;
+  transition: opacity 180ms ease, visibility 180ms ease;
   visibility: visible;
 }
 
