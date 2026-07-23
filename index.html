@@ -5,14 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="CaterTrack | Repuestos para maquinaria pesada. Especialistas en repuestos para Caterpillar, Komatsu y otras marcas. Cotice con nuestros asesores."
+      content="CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes."
     />
     <meta
       name="keywords"
       content="Repuestos Caterpillar, Repuestos maquinaria pesada, KMP, IPD, VemaTrack, Herramientas BYG, Tren de rodaje"
     />
+    <meta property="og:title" content="CaterTrack | Repuestos para maquinaria pesada" />
+    <meta property="og:description" content="Soluciones confiables, inventario real y asesoría especializada para maquinaria pesada." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/company.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CaterTrack | Repuestos para maquinaria pesada" />
+    <meta name="twitter:description" content="Especialistas en repuestos para maquinaria pesada con asesoría rápida y disponibilidad real." />
+    <meta name="twitter:image" content="assets/images/company.png" />
     <title>CaterTrack</title>
+    <link rel="icon" type="image/png" href="assets/images/foot.png" />
     <meta name="theme-color" content="#0B1F3A" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Organization", "LocalBusiness"],
+        "name": "CaterTrack",
+        "url": "https://catertrack.com",
+        "logo": "https://catertrack.com/assets/images/foot.png",
+        "description": "Especialistas en repuestos para maquinaria pesada, con inventario real y asesoría especializada.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CO"
+        },
+        "sameAs": [
+          "https://co.linkedin.com/company/catekomsas",
+          "https://www.instagram.com/catekom.co/",
+          "https://www.facebook.com/Catekom/?locale=es_LA"
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,7 +61,7 @@
     <link rel="stylesheet" href="css/ux.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <style>
-      .map-container { height: 420px; min-height: 300px; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 8px; }
+      .map-container { height: 200px; min-height: 280px; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 9px; }
     </style>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -52,8 +80,8 @@
            target="_blank"
            rel="noopener noreferrer">
             <img src="assets/images/Popup.png"
-                 alt="Promoción CaterTrack"
-                 class="popup-image"> 
+                 alt="Promoción de CaterTrack para repuestos y asesoría especializada"
+                 class="popup-image" loading="lazy" decoding="async"> 
 
         </a>
 
@@ -69,10 +97,6 @@
           </a>
 
           <div class="d-flex align-items-center ms-auto header__actions">
-            <label class="header__search" for="productSearch" aria-label="Buscar productos">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input id="productSearch" type="search" placeholder="Buscar repuesto" />
-            </label>
             <button
               class="navbar-toggler"
               type="button"
@@ -94,7 +118,7 @@
               <li class="nav-item"><a class="nav-link" href="#sucursales">Sucursales</a></li>
               <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
               <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-              <li class="nav-item"><a class="nav-link" href="#beneficios">Por qué elegirnos</a></li>
+              <li class="nav-item"><a class="nav-link" href="#beneficios">¿Por qué elegirnos?</a></li>
               <li class="nav-item"><a class="nav-link" href="#trabaja">Trabaja con nosotros</a></li>
             </ul>
           </div>
@@ -114,17 +138,26 @@
               <p class="hero__eyebrow">Especialistas en repuestos industriales</p>
               <h1>Repuestos y soluciones para maquinaria pesada</h1>
               <p class="hero__text">
-                Especialistas en repuestos para maquinaria Caterpillar®, Komatsu® y otras marcas líderes. Calidad garantizada, disponibilidad inmediata y asesoría especializada.
+                Especialistas en repuestos para maquinaria Caterpillar®, Komatsu®, Case, John Deere y otras marcas líderes. Calidad garantizada, disponibilidad inmediata y asesoría especializada.
               </p>
+              <div class="hero__trust-row" role="list" aria-label="Indicadores de confianza">
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  <span>+28 años de experiencia</span>
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+                  <span>+25.000 referencias disponibles</span>
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-award" aria-hidden="true"></i>
+                  <span>Distribuidores de marcas reconocidas</span>
+                </div>
+              </div>
               <div class="hero__actions">
                 <a class="btn btn-warning hero__btn hero__btn--primary" href="#advisor-title">Solicitar cotización</a>
                 <a class="btn btn-outline-light hero__btn hero__btn--secondary" href="https://wa.me/573132416739" target="_blank" rel="noopener noreferrer">Hablar con un asesor</a>
               </div>
-              <ul class="hero__highlights" aria-label="Indicadores de confianza">
-                <li><i class="fa-solid fa-shield-halved"></i> Calidad garantizada</li>
-                <li><i class="fa-solid fa-truck-fast"></i> Entrega rápida</li>
-                <li><i class="fa-solid fa-headset"></i> Asesoría 24/7</li>
-              </ul>
             </div>
             <div class="col-lg-5" data-aos="fade-left">
               <div class="hero__image-card">
@@ -139,18 +172,46 @@
           <div class="container">
             <div class="section__heading" data-aos="fade-up">
               <h2>Encuentra nuestras oficinas en Colombia</h2>
-              <p class="section__eyebrow">Bogotá, Medellín, Barranquilla, Neiva, Meta y Yopal</p>
+              <p class="section__eyebrow" aria-label="Sucursales disponibles">
+                <button class="branch-city-link" type="button" data-city="Bogotá">Bogotá</button>,
+                <button class="branch-city-link" type="button" data-city="Medellín">Medellín</button>,
+                <button class="branch-city-link" type="button" data-city="Barranquilla">Barranquilla</button>,
+                <button class="branch-city-link" type="button" data-city="Neiva">Neiva</button>,
+                <button class="branch-city-link" type="button" data-city="Meta">Meta</button>,
+                <button class="branch-city-link" type="button" data-city="Yopal">Yopal</button>
+              </p>
             </div>
             <div class="row g-4">
               <div class="col-12 d-flex justify-content-center" data-aos="fade-right">
-                <div id="map" class="map-container" role="region" aria-label="Mapa de sucursales"></div>
+                <div id="map" class="map-container map-container--compact" role="region" aria-label="Mapa de sucursales"></div>
               </div>
               <div class="col-12" data-aos="fade-up">
                 <div class="branch-card" id="branchDetails" role="status" aria-live="polite">
-                  <div class="branch-card__icon"><i class="fa-solid fa-location-dot"></i></div>
-                  <p class="branch-card__label">Sucursales activas</p>
-                  <h3>Selecciona una ciudad</h3>
-                  <p>Elige una ubicación del mapa para ver la dirección exacta, horario de atención y contacto directo.</p>
+                  <div class="branch-card__content">
+                    <div class="branch-card__text">
+                      <div class="branch-card__icon"><i class="fa-solid fa-location-dot"></i></div>
+                      <p class="branch-card__label">Sucursales activas</p>
+                      <h3>Selecciona una ciudad</h3>
+                      <p class="branch-card__intro">Elige una ubicación del mapa para ver la dirección exacta, horario de atención y contacto directo.</p>
+                      <div class="branch-card__details">
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Dirección</span>
+                          <p class="branch-card__detail-value" data-branch-field="address">Selecciona una sucursal para ver la dirección.</p>
+                        </div>
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Horario</span>
+                          <p class="branch-card__detail-value" data-branch-field="hours">Selecciona una sucursal para ver el horario.</p>
+                        </div>
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Contacto</span>
+                          <p class="branch-card__detail-value" data-branch-field="contact">Selecciona una sucursal para ver el contacto.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="branch-card__media" aria-hidden="true">
+                      <img src="assets/images/company.png" alt="Sucursal seleccionada de CaterTrack" loading="lazy" decoding="async" hidden />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -192,25 +253,25 @@
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
               <article class="stat-card">
                 <div class="stat-card__number" data-counter="28" data-prefix="+">0</div>
-                <h3>Años de Experiencia</h3>
+                <h3>Años de experiencia</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
               <article class="stat-card">
                 <div class="stat-card__number" data-counter="25000" data-prefix="+">0</div>
-                <h3>Referencias Disponibles</h3>
+                <h3>Referencias</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
               <article class="stat-card">
-                <div class="stat-card__number" data-counter="8" data-suffix="h">0</div>
-                <h3>Horario Atención</h3>
+                <div class="stat-card__number" data-counter="100" data-suffix="%">0</div>
+                <h3>Entrega nacional</h3>
               </article>
             </div>
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
               <article class="stat-card">
-                <div class="stat-card__number" data-counter="1" data-label="Inventario">0</div>
-                <h3>Entrega Inmediata</h3>
+                <div class="stat-card__number" data-counter="24" data-suffix="/7">0</div>
+                <h3>Asesoría especializada</h3>
               </article>
             </div>
           </div>
@@ -229,8 +290,9 @@
                 <img src="assets/images/Corte.png" alt="Herramientas de corte" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Herramientas de corte</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Componentes resistentes para trabajos de alto desgaste y mayor productividad.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/corte.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/corte.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -239,8 +301,9 @@
                 <img src="assets/images/Moto.png" alt="Repuestos de motor" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Repuestos de motor</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/motor.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/motor.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -249,8 +312,9 @@
                 <img src="assets/images/Rodaje.png" alt="Tren de rodaje" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Tren de rodaje</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Componentes robustos que garantizan estabilidad, durabilidad y mejor rendimiento.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/rodaje.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/rodaje.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -259,8 +323,9 @@
                 <img src="assets/images/Strip.png" alt="Strips" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Strips</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Elementos duraderos para aplicaciones de corte, desgaste y protección de equipos.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/strip.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/strip.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -269,8 +334,9 @@
                 <img src="assets/images/Lubricacion.png" alt="Lubricación" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Lubricación</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Kits y soluciones de lubricación para el mantenimiento continuo de sus equipos.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/lubri.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/lubri.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -279,8 +345,9 @@
                 <img src="assets/images/Miscelanios.png" alt="Repuestos generales" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Repuestos generales</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Amplio inventario para atender emergencias y mantener la operación en marcha.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/general.pdf'); return false;">Más información</a>
+                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/general.pdf'); return false;">Cátalogo</a>
                 </div>
               </div>
             </article>
@@ -292,10 +359,17 @@
       <section class="benefits section" id="beneficios">
         <div class="container">
           <div class="section__heading" data-aos="fade-up">
-            <p class="section__eyebrow">Por qué elegirnos</p>
-            <h2>Confianza, rapidez y experiencia industrial</h2>
+            <p class="section__eyebrow">¿Por qué elegirnos?</p>
+            <h2>Confianza, rapidez y experiencia</h2>
           </div>
           <div class="row g-4">
+            <article class="col-12" data-aos="fade-up" data-aos-delay="50">
+              <div class="benefit-card benefit-card--featured">
+                <div class="benefit-card__icon benefit-card__icon--stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+                <h3>Más de 28 años de respaldo en la industria</h3>
+                <p>Somos una empresa sólida, con experiencia real en el campo y una operación preparada para responder con rapidez y criterio técnico.</p>
+              </div>
+            </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
               <div class="benefit-card">
                 <div class="benefit-card__icon"><i class="fa-solid fa-award"></i></div>
@@ -307,7 +381,7 @@
               <div class="benefit-card">
                 <div class="benefit-card__icon"><i class="fa-solid fa-box-open"></i></div>
                 <h3>Inventario preparado</h3>
-                <p>Inventario preparado para atender requerimientos urgentes del campo.</p>
+                <p>Inventario preparado para atender requerimientos urgentes.</p>
               </div>
             </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
@@ -328,7 +402,7 @@
               <div class="benefit-card">
                 <div class="benefit-card__icon"><i class="fa-solid fa-warehouse"></i></div>
                 <h3>Amplio inventario</h3>
-                <p>Más de mil referencias disponibles para múltiples marcas y modelos.</p>
+                <p>Más de 5.000 referencias disponibles para múltiples marcas y modelos.</p>
               </div>
             </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
@@ -348,6 +422,30 @@
         </div>
       </section>
 
+      <!-- Sección de clientes -->
+      <section class="clients section" aria-labelledby="clients-title">
+        <div class="container">
+          <div class="section__heading" data-aos="fade-up">
+            <p class="section__eyebrow"></p>
+            <h2 id="clients-title">Empresas que confían en nosotros</h2>
+          </div>
+          <div class="clients__marquee" data-aos="fade-up" aria-label="Listado de clientes y marcas">
+            <div class="clients__track">
+              <div class="clients__logo">SOUTH32</div>
+              <div class="clients__logo">SP INGENIEROS</div>
+              <div class="clients__logo">CONSTRUVICOL</div>
+              <div class="clients__logo">MILPA</div>
+              <div class="clients__logo">AGREGADOS GUAYARUBITA</div>
+              <div class="clients__logo">KMA CONSTRUCCIONES</div>
+              <div class="clients__logo">CERREJON</div>
+              <div class="clients__logo">CONSTRUCTORA ARIGUANI</div>
+              <div class="clients__logo">CONCESIONARIA PANAMERICANA</div>
+              <div class="clients__logo">AGREGADOS TETUAN</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="advisor section" aria-labelledby="advisor-title">
         <div class="container">
           </div>
@@ -357,7 +455,6 @@
             </div>
             <div class="col-lg-8" data-aos="fade-left">
               <h3 id="advisor-title">ASESOR VIRTUAL</h3>
-              <p class="advisor__role">Asesor</p>
               <p>
                 Nuestro equipo está listo para brindarle asesoría personalizada y ayudarle a encontrar el repuesto adecuado para su maquinaria.
               </p>
@@ -441,6 +538,13 @@
             </a>
           </li>
 
+           <li>
+            <a href="https://www.tiktok.com/@catekom_sas" 
+               target="_blank">
+               Tiktok
+            </a>
+          </li>
+
         </ul>
 
       </div>
@@ -486,7 +590,6 @@
 
 </footer>
 
-
 <!-- Botón volver arriba -->
 <a class="back-to-top" href="#top" aria-label="Volver arriba">
   <i class="fa-solid fa-arrow-up"></i>
@@ -503,18 +606,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<script src="js/main.js"></script>
-<script src="js/ux.js"></script>
+<script src="js/main.js?v=20260722"></script>
+<script src="js/ux.js?v=20260722"></script>
 <!-- Leaflet JS + mapa de sucursales -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/map.js"></script>
+<script src="js/map.js?v=20260722"></script>
 
 
 <!-- Modal PDF -->
-<div id="pdfModal" class="pdf-modal">
+<div id="pdfModal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Visor de brochure PDF">
   <div class="pdf-modal-content">
-    <button class="cerrar-pdf" onclick="cerrarPDF()">✕</button>
-    <iframe id="visorPDF"></iframe>
+    <button class="cerrar-pdf" onclick="cerrarPDF()" aria-label="Cerrar visor PDF">✕</button>
+    <iframe id="visorPDF" title="Visor de brochure PDF"></iframe>
   </div>
 </div>
 

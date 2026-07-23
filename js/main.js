@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const backToTop = document.querySelector('.back-to-top');
   const whatsappButton = document.querySelector('.whatsapp-float');
+  const statNumbers = document.querySelectorAll('.stat-card__number');
+  const clientsTrack = document.querySelector('.clients__track');
 
   const toggleBackToTop = () => {
     if (window.scrollY > 500) {
@@ -26,8 +28,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const animateCounter = (element) => {
+    const target = Number(element.dataset.counter || 0);
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+    const duration = 1400;
+    const startTime = performance.now();
+
+    const step = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const currentValue = Math.round(target * easedProgress);
+
+      element.textContent = `${prefix}${currentValue}${suffix}`;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        element.textContent = `${prefix}${target}${suffix}`;
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
+  const initCounters = () => {
+    if (!statNumbers.length) return;
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        animateCounter(entry.target);
+        currentObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.35 });
+
+    statNumbers.forEach((stat) => observer.observe(stat));
+  };
+
+  const initClientsMarquee = () => {
+    if (!clientsTrack) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const logos = Array.from(clientsTrack.children);
+    if (!logos.length) return;
+
+    const clones = logos.map((logo) => logo.cloneNode(true));
+    clones.forEach((clone) => {
+      clone.setAttribute('aria-hidden', 'true');
+      clientsTrack.appendChild(clone);
+    });
+  };
+
   toggleBackToTop();
   resetPositions();
+  initCounters();
+  initClientsMarquee();
+
   window.addEventListener('scroll', toggleBackToTop, { passive: true });
   window.addEventListener('resize', resetPositions);
 
