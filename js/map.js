@@ -3,42 +3,42 @@ document.addEventListener('DOMContentLoaded', function () {
   const locations = {
     'Bogotá': {
       coords: [4.599380575422542, -74.09611760567681],
-      //image: 'assets/images/Corte.png',
+      image: 'assets/images/catertrack.png',
       address: 'Cra. 25 #2a-87, Los Mártires, Bogotá, Cundinamarca',
       hours: 'Lunes a viernes 8:00 a 5:30 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
     'Medellín': {
       coords: [6.237979365352332, -75.57269589031674],
-      //image: 'assets/images/Moto.png',
+      image: 'assets/images/medellin.png',
       address: 'Cra. 50 #36-19, La Candelaria, Medellín, La Candelaria, Medellín, Antioquia',
       hours: 'Lunes a viernes 8:00 a 5:30 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
     'Barranquilla': {
       coords: [10.9685, -74.7813],
-      //image: 'assets/images/Strip.png',
+      image: 'assets/images/barranquilla.png',
       address: 'Por definir, Barranquilla, Atlántico',
       hours: 'Lunes a viernes 8:00 a 17:00 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
     'Neiva': {
       coords: [2.941108932309823, -75.30217677685152],
-      //image: 'assets/images/Rodaje.png',
+      image: 'assets/images/neiva.png',
       address: 'Cl. 1G #5a-23, Neiva, Huila',
       hours: 'Lunes a viernes 8:00 a 17:00 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
     'Meta': {
       coords: [4.139324012852299, -73.63200396335262],
-      //image: 'assets/images/Lubricacion.png',
+      image: 'assets/images/meta.png',
       address: 'Cl. 24 A #34 -20, Villavicencio, Meta',
       hours: 'Lunes a viernes 7:00 a 17:00 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
     'Yopal': {
       coords: [5.33204239565956, -72.40632920567054],
-      //image: 'assets/images/Perfil.png',
+      image: 'assets/images/yopal.png',
       address: 'Cl. 24 #7a-38, Yopal, Casanare',
       hours: 'Lunes a viernes 7:00 a 16:00 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
