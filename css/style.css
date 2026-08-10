@@ -140,7 +140,7 @@ p {
 }
 
 .header__logo-image {
-  max-height: 110px;
+  max-height: 120px;
   width: auto;
   display: block;
 }
@@ -153,6 +153,49 @@ p {
 
 .header__logo:hover {
   transform: translateY(-2px);
+}
+
+.header__contact{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: 1rem;
+}
+
+.header__contact-item{
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+    color: rgba(11, 31, 58, 0.78);
+    font-size: 13px;
+    font-weight: 400;
+    transition: color 160ms ease;
+}
+
+.header__contact-item:hover,
+.header__contact-item:focus-visible {
+    color: #154a8a;
+}
+
+.header__contact-item i {
+  font-size: 15px;
+  color: #154a8a;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__contact-item strong {
+  font-weight: 600;
+}
+
+@media (max-width: 991px) {
+  .header__contact {
+    display: none;
+  }
 }
 
 .header__logo-mark,
@@ -323,6 +366,25 @@ p {
   font-size: 0.98rem;
 }
 
+.btn {
+  border-radius: 999px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+}
+
 .hero__btn--primary {
   background: var(--color-cta);
   color: var(--color-primary);
@@ -453,6 +515,43 @@ p {
 
 .product-card__body {
   padding: 1.3rem 1.4rem 1.6rem;
+}
+
+.product-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.product-card__body .text-link,
+.product-card__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+  border: 1px solid rgba(21, 74, 138, 0.25);
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.product-card__body .text-link:hover,
+.product-card__body .text-link:focus-visible,
+.product-card__action:hover,
+.product-card__action:focus-visible {
+  text-decoration: none;
+  color: #ffffff;
+  border-color: #154a8a;
+  background: #154a8a;
+  transform: translateY(-1px);
 }
 
 .product-card__reference {

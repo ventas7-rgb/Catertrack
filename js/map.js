@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'Neiva': {
       coords: [2.941108932309823, -75.30217677685152],
       image: 'assets/images/neiva.png',
-      address: 'Cl. 1G #5a-23, Neiva, Huila',
+      address: 'Cra 7 w 25 l 38, Neiva, Huila - Estacion de Servico Terpel',
       hours: 'Lunes a viernes 8:00 a 17:00 Sábados 8:30 a 12:30',
       contact: '+57 313 2416739'
     },
