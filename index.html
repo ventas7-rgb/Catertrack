@@ -214,8 +214,12 @@
                  <h2>Novedades</h2>
                  <p class="section__subtitle">Nuevas piezas de alto desempeño para tu maquinaria pesada.</p>
                </div>
-               <!-- Ajusta el tiempo en milisegundos: 1000 = 1 segundo, 5000 = 5 segundos. -->
-               <div id="novedadesCarousel" class="carousel slide novedades-banner" data-bs-ride="carousel" data-bs-interval="1500">
+               <!-- Ajusta el tiempo en milisegundos: 2500 = 2.5 segundos. data-bs-pause="false" evita pausar al pasar el cursor. -->
+               <div id="novedadesCarousel" class="carousel slide novedades-banner" data-bs-ride="carousel" data-bs-interval="2500" data-bs-pause="false">
+    <div class="novedades-offer-countdown" aria-label="Oferta válida por tiempo limitado">
+      <span class="novedades-offer-countdown__label">OFERTA TERMINA EN</span>
+      <span class="novedades-offer-countdown__timer" id="novedadesOfferCountdown" role="timer" aria-live="polite">7d 00:00:00</span>
+    </div>
 
     <div class="carousel-inner">
       
@@ -264,31 +268,71 @@
     </button>
 
 </div>
-               <div class="row g-4">
-                 <div class="col-md-6" data-aos="fade-up">
-                   <article class="novedad-card">
-                     <div class="novedad-card__image">
-                       <img src="assets/images/novedades/bomba.jpeg" alt="Bomba industrial CaterTrack" loading="lazy" decoding="async" />
+               <div id="novedadesCardsCarousel" class="carousel slide novedades-cards-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+                 <div class="carousel-inner">
+                   <div class="carousel-item active">
+                     <div class="row g-4">
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/martillo.svg" alt="MARTILLO HIDRAULICO" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">MARTILLO HIDRAULICO</h3>
+                             <p class="novedad-card__text">El martillo hidráulico JOBS forma parte de la gama de martillos hidráulicos JOBS, diseñado para trabajar con <strong>excavadoras de 18 a 26 toneladas</strong>.</p>
+                           </div>
+                         </article>
+                       </div>
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/Publicidad.svg" alt="Detalle por compras CaterTrack" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">DETALLES</h3>
+                             <p class="novedad-card__text">Por compras superiores a <strong>$2.000.000</strong> lleva un detalle de CaterTrack.</p>
+                           </div>
+                         </article>
+                       </div>
                      </div>
-                     <div class="novedad-card__body">
-                       <p class="novedad-card__eyebrow">Novedad</p>
-                       <h3 class="novedad-card__title">Bomba Premium</h3>
-                       <p class="novedad-card__text">Solución hidráulica diseñada para máximo rendimiento y larga vida útil en aplicaciones industriales.</p>
+                   </div>
+                   <div class="carousel-item">
+                     <div class="row g-4">
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/strips.svg" alt="Tren de rodaje Vematrack" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">STRIPS</h3>
+                             <p class="novedad-card__text"><strong>Descuentos especiales en strips para maquinaria pesada.</strong></p>
+                           </div>
+                         </article>
+                       </div>
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/vacante.svg" alt="Partes hidráulicas para maquinaria pesada" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">¿Buscas Empleo?</h3>
+                             <p class="novedad-card__text">Estamos en búsqueda de nuevos talentos para unirnos a nuestro equipo.</p>
+                           </div>
+                         </article>
+                       </div>
                      </div>
-                   </article>
+                   </div>
                  </div>
-                 <div class="col-md-6" data-aos="fade-up">
-                   <article class="novedad-card">
-                     <div class="novedad-card__image">
-                       <img src="assets/images/novedades/bombak.jpeg" alt="Bomba con certificación CaterTrack" loading="lazy" decoding="async" />
-                     </div>
-                     <div class="novedad-card__body">
-                       <p class="novedad-card__eyebrow">Novedad</p>
-                       <h3 class="novedad-card__title">Bomba K</h3>
-                       <p class="novedad-card__text">Componentes confiables con tecnología certificada para atender las exigencias de proyectos pesados.</p>
-                     </div>
-                   </article>
-                 </div>
+                 <button class="carousel-control-prev" type="button" data-bs-target="#novedadesCardsCarousel" data-bs-slide="prev" aria-label="Novedades anteriores">
+                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 </button>
+                 <button class="carousel-control-next" type="button" data-bs-target="#novedadesCardsCarousel" data-bs-slide="next" aria-label="Siguientes novedades">
+                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                 </button>
                </div>
              </div>
            </section>

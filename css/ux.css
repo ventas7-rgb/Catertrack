@@ -351,15 +351,56 @@ section {
     transition: none !important;
 }
 
+.novedades-offer-countdown {
+  position: absolute;
+  top: clamp(0.75rem, 2vw, 1.5rem);
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1rem;
+  color: var(--color-white);
+  background: rgba(11, 31, 58, 0.9);
+  border: 1px solid rgba(255, 193, 7, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(11, 31, 58, 0.2);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.novedades-offer-countdown__label {
+  font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+  color: var(--color-cta);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.novedades-offer-countdown__timer {
+  color: var(--color-cta);
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
 .novedades-whatsapp-button {
   position: absolute;
-  right: 8.5rem;
-  bottom: 1.5rem;
+  right: clamp(1rem, 8vw, 8.5rem);
+  bottom: clamp(1rem, 3vw, 1.5rem);
   z-index: 3;
-  width: 300px;
+  width: min(300px, calc(100vw - 2rem));
   height: 50px;
   opacity: 0;
   pointer-events: auto;
+}
+
+@media (max-width: 1100px) {
+  .novedades-whatsapp-button {
+    pointer-events: none;
+  }
 }
 
 .novedades-banner .carousel-control-prev,
@@ -391,6 +432,19 @@ section {
   background-size: 100% 100%;
 }
 
+@media (max-width: 600px) {
+  .novedades-offer-countdown {
+    gap: 0.45rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .novedades-offer-countdown__label {
+    max-width: 8rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
 .novedad-card {
   display: flex;
   flex-direction: column;
@@ -399,6 +453,42 @@ section {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(229, 229, 229, 0.95);
   background: #ffffff;
+}
+
+.novedades-cards-carousel {
+  padding: 0 3.5rem;
+}
+
+.novedades-cards-carousel .carousel-item {
+  padding: 0.25rem 0;
+}
+
+.novedades-cards-carousel .carousel-control-prev,
+.novedades-cards-carousel .carousel-control-next {
+  width: 2.75rem;
+  height: 2.75rem;
+  top: 50%;
+  bottom: auto;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.novedades-cards-carousel .carousel-control-prev {
+  left: 0;
+}
+
+.novedades-cards-carousel .carousel-control-next {
+  right: 0;
+}
+
+.novedades-cards-carousel .carousel-control-prev:hover,
+.novedades-cards-carousel .carousel-control-next:hover,
+.novedades-cards-carousel .carousel-control-prev:focus-visible,
+.novedades-cards-carousel .carousel-control-next:focus-visible {
+  background: var(--color-secondary);
+  opacity: 1;
 }
 
 .novedad-card__image {

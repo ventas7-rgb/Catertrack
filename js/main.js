@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const whatsappButton = document.querySelector('.whatsapp-float');
   const statNumbers = document.querySelectorAll('.stat-card__number');
   const clientsTrack = document.querySelector('.clients__track');
+  const offerCountdown = document.getElementById('novedadesOfferCountdown');
 
   const toggleBackToTop = () => {
     if (window.scrollY > 500) {
@@ -83,10 +84,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initOfferCountdown = () => {
+    if (!offerCountdown) return;
+
+    const storageKey = 'catertrack-novedades-offer-expires-at';
+    const offerDuration = 7 * 24 * 60 * 60 * 1000;
+    let expiresAt = Number(localStorage.getItem(storageKey) || 0);
+
+    if (!expiresAt || expiresAt <= Date.now()) {
+      expiresAt = Date.now() + offerDuration;
+      localStorage.setItem(storageKey, String(expiresAt));
+    }
+
+    const updateCountdown = () => {
+      let remaining = expiresAt - Date.now();
+
+      if (remaining <= 0) {
+        expiresAt = Date.now() + offerDuration;
+        localStorage.setItem(storageKey, String(expiresAt));
+        remaining = offerDuration;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      const format = (value) => String(value).padStart(2, '0');
+
+      offerCountdown.textContent = `${days}d ${format(hours)}:${format(minutes)}:${format(seconds)}`;
+    };
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+  };
+
   toggleBackToTop();
   resetPositions();
   initCounters();
   initClientsMarquee();
+  initOfferCountdown();
 
   window.addEventListener('scroll', toggleBackToTop, { passive: true });
   window.addEventListener('resize', resetPositions);
