@@ -347,6 +347,11 @@ section {
     object-fit: cover;
 }
 
+.novedades-banner .carousel-inner,
+.novedades-banner .carousel-item {
+  height: 100%;
+}
+
 .novedades-banner .carousel-item {
     transition: none !important;
 }
@@ -459,8 +464,15 @@ section {
   padding: 0 3.5rem;
 }
 
+.novedades-cards-carousel .carousel-inner {
+  display: grid;
+}
+
 .novedades-cards-carousel .carousel-item {
   padding: 0.25rem 0;
+  float: none;
+  grid-area: 1 / 1;
+  margin-right: 0;
 }
 
 .novedades-cards-carousel .carousel-control-prev,
