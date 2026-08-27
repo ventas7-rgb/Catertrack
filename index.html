@@ -64,6 +64,75 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <style>
       .map-container { height: 200px; min-height: 280px; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 9px; }
+
+      /* Presentación de marcas */
+      #distribuciones {
+        scroll-margin-top: 92px;
+        background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+      }
+      #distribuciones .section__heading { margin-bottom: 2.25rem; }
+      #distribuciones .section__heading h2 { position: relative; display: inline-block; }
+      #distribuciones .section__heading h2::after {
+        content: "";
+        display: block;
+        width: 58px;
+        height: 4px;
+        margin: .75rem auto 0;
+        border-radius: 99px;
+        background: #f5b400;
+      }
+      #distribuciones .brands__marquee {
+        overflow: hidden;
+        padding: .75rem .25rem 1.25rem;
+        mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      }
+      #distribuciones .brands__track {
+        display: flex;
+        align-items: stretch;
+        gap: 1.25rem;
+      }
+      #distribuciones .brands__logo {
+        flex: 0 0 210px;
+        min-height: 112px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .7rem;
+        padding: 1rem;
+        border: 1px solid #e3e8ef;
+        border-radius: 14px;
+        background: rgba(255,255,255,.96);
+        box-shadow: 0 8px 22px rgba(11,31,58,.08);
+        color: #0b1f3a;
+        font-family: Montserrat, sans-serif;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-align: center;
+        text-decoration: none;
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+      #distribuciones .brands__logo:hover,
+      #distribuciones .brands__logo:focus-visible {
+        transform: translateY(-6px);
+        border-color: #f5b400;
+        box-shadow: 0 14px 30px rgba(11,31,58,.15);
+        color: #0b1f3a;
+      }
+      #distribuciones .brands__logo img {
+        width: 100%;
+        height: 100%;
+        max-height: 88px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        object-fit: contain;
+      }
+      @media (max-width: 576px) {
+        #distribuciones .brands__logo { flex-basis: 175px; min-height: 105px; }
+      }
     </style>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -115,9 +184,9 @@
     <header class="header" id="top">
       <div class="container">
         <nav class="navbar navbar-expand-lg align-items-center" aria-label="Navegación principal">
-          <a class="navbar-brand header__logo" href="#top" aria-label="Inicio CaterTrack">
+          <div class="navbar-brand header__logo" aria-label="Logo CaterTrack">
             <img src="assets/images/foot.png" alt="CaterTrack logo" class="header__logo-image" />
-          </a>
+          </div>
 
           <div class="d-flex align-items-center ms-auto header__actions">
             <button
@@ -461,7 +530,10 @@
                   <h3>Tren de rodaje - Vematrack</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Para Excavadoras y Bulldozer de 12 a 45 Toneladas.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -474,6 +546,7 @@
                   <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
                   <div class="product-card__actions">
                   <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;" aria-label="Abrir catálogo IPD">catálogo</a>
+                  <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
                   </div>
                 </div>
              </article>
@@ -486,6 +559,7 @@
                   <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
                   <div class="product-card__actions">
                     <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;" aria-label="Abrir catálogo KMP">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
                   </div>
                 </div>
               </article>
@@ -497,7 +571,10 @@
                   <h3>BYG Y VEMATRACK</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Cuchillas, Cantoneras, Dientes y Bases.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -508,7 +585,10 @@
                   <h3>Inyeccion</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Inyectores y Bombas de Inyección.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -519,7 +599,10 @@
                   <h3>Tren de Fuerza</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Cadenas Tandem, Engranajes y Componentes de Transmisión.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -530,7 +613,10 @@
                   <h3>Partes Hidraulicas</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Cartuchos Hidraulicops, Bombas Hidrauliacas, Mangueras.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -541,7 +627,10 @@
                   <h3>Ajuste Tornillos y Bujes</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Strips, Tornillos, Bujes.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -552,7 +641,10 @@
                   <h3>Aceites, Filtros y Lubricantes</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Filtros, Aceites, Lubricantes.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -563,7 +655,10 @@
                   <h3>Monitores, Computadores y Partes electricas</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Monitores, Computadores, Partes eléctricas.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -574,7 +669,10 @@
                   <h3>LLantas y neumáticos</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>LLantas y neumáticos para maquinaria pesada.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
               </article>
@@ -585,7 +683,10 @@
                   <h3>Miscelaneos</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
                   <p>Turbos, bomba de agua y aceite, fancluth, terminales y manometros.</p>
-                  <a href="#" class="text-link" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="#advisor-title" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -660,44 +761,43 @@
         </div>
       </section>
 
-     <!-- Sección de clientes
-      <section class="clients section" aria-labelledby="clients-title">
+     <!-- Sección de marcas -->
+      <section class="brands section" id="distribuciones" aria-labelledby="brands-title">
         <div class="container">
           <div class="section__heading" data-aos="fade-up">
             <p class="section__eyebrow"></p>
-            <h2 id="clients-title">Empresas que confían en nosotros</h2>
+            <h2 id="brands-title">Marcas</h2>
           </div>
-<div class="clients__marquee" data-aos="fade-up" aria-label="Listado de clientes y marcas">
-    <div class="clients__track">
+<div class="brands__marquee" data-aos="fade-up" aria-label="Listado de marcas">
+    <div class="brands__track">
 
-        <a href="https://www.south32.net/" target="_blank" class="clients__logo">SOUTH32</a>
+        <div class="brands__logo"><img src="assets/images/marcas/bosh.svg" alt="Logo Bosh" loading="lazy" /></div>
 
-        <a href="https://www.sp.com.co/" target="_blank" class="clients__logo">SP INGENIEROS</a>
+        <div class="brands__logo"><img src="assets/images/marcas/byg.svg" alt="Logo BYG" loading="lazy" /></div>
 
-        <a href="https://www.construvicol.com/" target="_blank" class="clients__logo">CONSTRUVICOL</a>
+        <div class="brands__logo"><img src="assets/images/marcas/cat.svg" alt="Logo Caterpillar" loading="lazy" /></div>
 
-        <a href="https://www.milpa.com.co/" target="_blank" class="clients__logo">MILPA</a>
+        <div class="brands__logo"><img src="assets/images/marcas/cgr.svg" alt="Logo CGR" loading="lazy" /></div>
 
-        <a href="https://www.agregadosguayuriba.com/" target="_blank" class="clients__logo">AGREGADOS GUAYARUBITA</a>
+        <div class="brands__logo"><img src="assets/images/marcas/ctp.svg" alt="Logo CTP" loading="lazy" /></div>
 
-        <a href="https://kma.com.co/" target="_blank" class="clients__logo">KMA CONSTRUCCIONES</a>
+        <div class="brands__logo"><img src="assets/images/marcas/doosan.svg" alt="Logo Doosan" loading="lazy" /></div>
 
-        <a href="https://www.cerrejon.com/es" target="_blank" class="clients__logo">CERREJON</a>
+        <div class="brands__logo"><img src="assets/images/marcas/fsp.svg" alt="Logo FSP" loading="lazy" /></div>
 
-        <a href="https://www.ariguani.com.co/" target="_blank" class="clients__logo">CONSTRUCTORA ARIGUANI</a>
+        <div class="brands__logo"><img src="assets/images/marcas/hitachi.svg" alt="Logo Hitachi" loading="lazy" /></div>
 
-        <a href="https://cpanamericana.com.co/" target="_blank" class="clients__logo">CONCESIONARIA PANAMERICANA</a>
+        <div class="brands__logo"><img src="assets/images/marcas/ipd.svg" alt="Logo IPD" loading="lazy" /></div>
 
-        <a href="https://www.google.com/maps/place/Agregados+Tetuan+S+A+S/@4.6258348,-74.0772439,16z/data=!4m6!3m5!1s0x8e3f9980c1e575e5:0xd7ec00572a931bc9!8m2!3d4.6250969!4d-74.0725876!16s%2Fg%2F11sy735vnb?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="clients__logo">AGREGADOS TETUAN</a>
+        <div class="brands__logo"><img src="assets/images/marcas/kmp.svg" alt="Logo KMP" loading="lazy" /></div>
 
-        <a href="https://www.petrolabin.com/web/" target="_blank" class="clients__logo">PETROLABIN</a>
+        <div class="brands__logo"><img src="assets/images/marcas/komatsu.svg" alt="Logo Komatsu" loading="lazy" /></div>
 
-        <a href="https://mipgroup.com.co/" target="_blank" class="clients__logo">MIP INTERNACIONAL TRADING SAS</a>
+        <div class="brands__logo"><img src="assets/images/marcas/vematec.svg" alt="Logo Vematec" loading="lazy" /></div>
 
-        <a href="https://meyan.com.co/" target="_blank" class="clients__logo">MEYAN SAS</a>
+        <div class="brands__logo"><img src="assets/images/marcas/vematrack.svg" alt="Logo Vematrack" loading="lazy" /></div>
 
     </div>
- -->
 </div>
       </section>
 
@@ -735,11 +835,11 @@
       <!-- Logo y descripción -->
       <div class="col-lg-3 footer-info">
 
-        <a class="footer__brand" href="#top">
+        <div class="footer__brand">
           <img src="assets/images/foot.png" 
                alt="CaterTrack logo" 
                class="footer__logo-image">
-        </a>
+        </div>
 
         <p>
           Especialistas en repuestos para maquinaria pesada, con soluciones rápidas y asesoría técnica especializada.
