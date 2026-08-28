@@ -119,11 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setInterval(updateCountdown, 1000);
   };
 
+  const initRepuestoLinks = () => {
+    const repuestoLinks = Array.from(document.querySelectorAll('.product-card__action'))
+      .filter((link) => link.textContent.trim().toLowerCase() === 'buscar repuesto');
+
+    repuestoLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.location.assign(link.href);
+      }, true);
+    });
+  };
+
   toggleBackToTop();
   resetPositions();
   initCounters();
   initClientsMarquee();
   initOfferCountdown();
+  initRepuestoLinks();
 
   window.addEventListener('scroll', toggleBackToTop, { passive: true });
   window.addEventListener('resize', resetPositions);
