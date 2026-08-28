@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loading = document.getElementById('page-loading');
   const heroVideo = document.querySelector('.hero__video');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let maxScroll = 0;
 
   if (window.AOS) {
     window.AOS.init({
@@ -25,11 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateProgress = () => {
     const scrollTop = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const pct = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
     if (progressBar) {
       progressBar.style.width = `${pct}%`;
     }
+  };
+
+  const updateScrollBounds = () => {
+    maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+    updateProgress();
   };
 
   const initBranchDetails = () => {
@@ -46,13 +51,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const hero = document.querySelector('.hero');
     if (!hero || prefersReducedMotion) return;
 
-    hero.addEventListener('pointermove', (event) => {
-      const rect = hero.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
+    let framePending = false;
+    let pointerPosition = null;
+    let heroBounds = hero.getBoundingClientRect();
+
+    const updateGlow = () => {
+      framePending = false;
+      if (!pointerPosition) return;
+
+      const x = (pointerPosition.clientX - heroBounds.left) / heroBounds.width - 0.5;
+      const y = (pointerPosition.clientY - heroBounds.top) / heroBounds.height - 0.5;
       hero.style.setProperty('--hero-glow-x', `${x * 60}px`);
       hero.style.setProperty('--hero-glow-y', `${y * 60}px`);
+    };
+
+    hero.addEventListener('pointermove', (event) => {
+      pointerPosition = event;
+      if (!framePending) {
+        framePending = true;
+        window.requestAnimationFrame(updateGlow);
+      }
     });
+
+    window.addEventListener('resize', () => {
+      heroBounds = hero.getBoundingClientRect();
+    }, { passive: true });
   };
 
   const initHeroVideo = () => {
@@ -67,6 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
     heroVideo.addEventListener('loadedmetadata', () => {
       heroVideo.playbackRate = 1.5;
     }, { once: true });
+
+    const hero = heroVideo.closest('.hero');
+    if (!hero || !window.IntersectionObserver) return;
+
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+    }, { threshold: 0.01 });
+
+    visibilityObserver.observe(hero);
   };
 
   const initLoading = () => {
@@ -83,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   setHeaderState();
-  updateProgress();
+  updateScrollBounds();
   initBranchDetails();
   initHeroParallax();
   initHeroVideo();
@@ -102,5 +138,5 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', updateProgress);
+  window.addEventListener('resize', updateScrollBounds, { passive: true });
 });

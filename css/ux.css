@@ -154,20 +154,6 @@ body::before {
   transform: translateY(22px);
 }
 
-.hero__actions a,
-.advisor__contact-list a,
-.footer-email,
-.back-to-top,
-.whatsapp-float,
-.product-card,
-.benefit-card,
-.stat-card,
-.about__media,
-.hero__image-card,
-.branch-card {
-  will-change: transform, box-shadow;
-}
-
 .hero__btn,
 .advisor__btn,
 .contact-form__submit,
