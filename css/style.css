@@ -292,7 +292,7 @@ p {
   min-height: clamp(680px, 90vh, 920px);
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, rgba(11, 31, 58, 0.92) 0%, rgba(11, 31, 58, 0.76) 45%, rgba(11, 31, 58, 0.64) 100%), url('../assets/images/fondo.jpg') center/cover no-repeat;
+  background: linear-gradient(90deg, rgba(11, 31, 58, 0.92) 0%, rgba(11, 31, 58, 0.76) 45%, rgba(11, 31, 58, 0.64) 100%);
   color: var(--color-white);
   position: relative;
 }

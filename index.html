@@ -15,12 +15,14 @@
     <meta property="og:title" content="CaterTrack | Repuestos para maquinaria pesada" />
     <meta property="og:description" content="CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/images/company.png" />
+    <meta property="og:url" content="https://catertracksas.co/" />
+    <meta property="og:image" content="https://catertracksas.co/assets/images/company1.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CaterTrack | Repuestos para maquinaria pesada" />
     <meta name="twitter:description" content="Especialistas en repuestos para maquinaria pesada con asesoría rápida y disponibilidad real." />
-    <meta name="twitter:image" content="assets/images/company.png" />
-    <meta name="robots" content="index, follow">
+    <meta name="twitter:image" content="https://catertracksas.co/assets/images/company1.webp" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://catertracksas.co/" />
     <title>CaterTrack | Repuestos para maquinaria pesada</title>
     <link rel="icon" type="image/png" href="assets/images/Favicon-catekom.ico" />
     <meta name="theme-color" content="#0B1F3A" />
@@ -29,8 +31,8 @@
         "@context": "https://schema.org",
         "@type": ["Organization", "LocalBusiness"],
         "name": "CaterTrack",
-        "url": "https://catertrack.co",
-        "logo": "https://catertrack.co/assets/images/Favicon-catekom.ico",
+        "url": "https://catertracksas.co/",
+        "logo": "https://catertracksas.co/assets/images/Favicon-catekom.ico",
         "description": "CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes.",
         "address": {
           "@type": "PostalAddress",
@@ -150,7 +152,7 @@
         <a href="https://wa.me/573001234567?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n."
            target="_blank"
            rel="noopener noreferrer">
-            <img src="assets/images/Popup.png"
+              <img data-src="assets/images/Popup.webp"
                  alt="Promoción de CaterTrack para repuestos y asesoría especializada"
                  class="popup-image" loading="lazy" decoding="async"> 
 
@@ -185,7 +187,10 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg align-items-center" aria-label="Navegación principal">
           <div class="navbar-brand header__logo" aria-label="Logo CaterTrack">
-            <img src="assets/images/foot.png" alt="CaterTrack logo" class="header__logo-image" />
+            <picture>
+              <source srcset="assets/images/foot.webp" type="image/webp" />
+              <img src="assets/images/foot.png" alt="CaterTrack logo" class="header__logo-image" />
+            </picture>
           </div>
 
           <div class="d-flex align-items-center ms-auto header__actions">
@@ -221,7 +226,7 @@
 
     <main id="main-content">
       <section class="hero" id="inicio">
-        <video class="hero__video" autoplay loop muted playsinline preload="metadata" poster="assets/images/fondo.jpg" aria-hidden="true">
+        <video class="hero__video" autoplay loop muted playsinline preload="metadata" aria-hidden="true">
           <source src="assets/videos/exca.mp4" type="video/mp4" />
         </video>
         <div class="hero__overlay"></div>
@@ -256,10 +261,13 @@
               <div id="heroImageCarousel" class="carousel slide hero__image-card" data-bs-ride="carousel" aria-label="Galería de imágenes">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="assets/images/company1.png" class="d-block w-100" alt="Motor para maquinaria pesada" loading="lazy" />
+                    <picture>
+                      <source srcset="assets/images/company1.webp" type="image/webp" />
+                      <img src="assets/images/company1.png" class="d-block w-100" alt="Motor para maquinaria pesada" fetchpriority="high" />
+                    </picture>
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/images/company2.png" class="d-block w-100" alt="Bomba industrial para maquinaria pesada" loading="lazy" />
+                    <img src="assets/images/company2.webp" class="d-block w-100" alt="Bomba industrial para maquinaria pesada" loading="lazy" />
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#heroImageCarousel" data-bs-slide="prev" aria-label="Imagen anterior">
@@ -294,23 +302,38 @@
       
 
         <div class="carousel-item active">
-            <img src="assets/images/banner/cadenabanner.svg" alt="Novedad 1">
+            <picture>
+              <source srcset="assets/images/banner/cadenabanner.webp" type="image/webp" />
+              <img src="assets/images/banner/cadenabanner.svg" alt="Novedad 1">
+            </picture>
         </div>
 
         <div class="carousel-item">
-            <img src="assets/images/banner/sprocketbanner.svg" alt="Novedad 2">
+            <picture>
+              <source srcset="assets/images/banner/sprocketbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/sprocketbanner.svg" alt="Novedad 2">
+            </picture>
         </div>
 
         <div class="carousel-item">
-            <img src="assets/images/banner/carrilesbanner.svg" alt="Novedad 3">
+            <picture>
+              <source srcset="assets/images/banner/carrilesbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/carrilesbanner.svg" alt="Novedad 3">
+            </picture>
         </div>
 
         <div class="carousel-item">
-            <img src="assets/images/banner/tensorabanner.svg" alt="Novedad 4">
+            <picture>
+              <source srcset="assets/images/banner/tensorabanner.webp" type="image/webp" />
+              <img src="assets/images/banner/tensorabanner.svg" alt="Novedad 4">
+            </picture>
         </div>
 
         <div class="carousel-item">
-            <img src="assets/images/banner/tejasbanner.svg" alt="Novedad 5">
+            <picture>
+              <source srcset="assets/images/banner/tejasbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/tejasbanner.svg" alt="Novedad 5">
+            </picture>
         </div>
 
     </div>
@@ -344,7 +367,7 @@
                        <div class="col-md-6" data-aos="fade-up">
                          <article class="novedad-card">
                            <div class="novedad-card__image">
-                             <img src="assets/images/novedades/martillo.svg" alt="MARTILLO HIDRAULICO" loading="lazy" decoding="async" />
+                             <img src="assets/images/novedades/martillo.webp" alt="MARTILLO HIDRAULICO" loading="lazy" decoding="async" />
                            </div>
                            <div class="novedad-card__body">
                              <p class="novedad-card__eyebrow">Novedad</p>
@@ -356,7 +379,7 @@
                        <div class="col-md-6" data-aos="fade-up">
                          <article class="novedad-card">
                            <div class="novedad-card__image">
-                             <img src="assets/images/novedades/Publicidad.svg" alt="Detalle por compras CaterTrack" loading="lazy" decoding="async" />
+                             <img src="assets/images/novedades/Publicidad.webp" alt="Detalle por compras CaterTrack" loading="lazy" decoding="async" />
                            </div>
                            <div class="novedad-card__body">
                              <p class="novedad-card__eyebrow">Novedad</p>
@@ -372,7 +395,7 @@
                        <div class="col-md-6" data-aos="fade-up">
                          <article class="novedad-card">
                            <div class="novedad-card__image">
-                             <img src="assets/images/novedades/strips.svg" alt="Tren de rodaje Vematrack" loading="lazy" decoding="async" />
+                             <img src="assets/images/novedades/strips.webp" alt="Tren de rodaje Vematrack" loading="lazy" decoding="async" />
                            </div>
                            <div class="novedad-card__body">
                              <p class="novedad-card__eyebrow">Novedad</p>
@@ -384,7 +407,7 @@
                        <div class="col-md-6" data-aos="fade-up">
                          <article class="novedad-card">
                            <div class="novedad-card__image">
-                             <img src="assets/images/novedades/vacante.svg" alt="Partes hidráulicas para maquinaria pesada" loading="lazy" decoding="async" />
+                             <img src="assets/images/novedades/vacante.webp" alt="Partes hidráulicas para maquinaria pesada" loading="lazy" decoding="async" />
                            </div>
                            <div class="novedad-card__body">
                              <p class="novedad-card__eyebrow">Novedad</p>
@@ -449,7 +472,7 @@
                       </div>
                     </div>
                     <div class="branch-card__media" aria-hidden="true">
-                      <img src="assets/images/sucursales/catertrack.png" alt="Sucursal seleccionada de CaterTrack" loading="lazy" decoding="async" hidden />
+                      <img src="assets/images/sucursales/catertrack.webp" alt="Sucursal seleccionada de CaterTrack" loading="lazy" decoding="async" hidden />
                     </div>
                   </div>
                 </div>
@@ -525,7 +548,7 @@
             
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100" data-card data-brand="caterpillar" data-category="herramientas" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/tren-de-rodaje.svg" alt="Tren de rodaje - Vematrack" loading="lazy" />
+                <img src="assets/images/categorias/tren-de-rodaje.webp" alt="Tren de rodaje - Vematrack" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Tren de rodaje - Vematrack</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -539,7 +562,7 @@
             </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/repuestos-de-motor-ipd.svg" alt="Repuestos de motor" loading="lazy" />
+                <img src="assets/images/categorias/repuestos-de-motor-ipd.webp" alt="Repuestos de motor" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Repuestos Motores Caterpillar y Cummins</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -552,7 +575,7 @@
              </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/repuestos-de-motor-kmp.svg" alt="Repuestos de motor" loading="lazy" />
+                <img src="assets/images/categorias/repuestos-de-motor-kmp.webp" alt="Repuestos de motor" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Repuestos Motores Komatsu y John Deere</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -565,7 +588,7 @@
               </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300" data-card data-brand="caterpillar" data-category="rodaje" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/herramientas-de-corte.svg" alt="Tren de rodaje" loading="lazy" />
+                <img src="assets/images/categorias/herramientas-de-corte.webp" alt="Tren de rodaje" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Herramientas de Corte</h3>
                   <h3>BYG Y VEMATRACK</h3>
@@ -580,7 +603,7 @@
             </article>
             <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/inyeccion.svg" alt="Inyeccion" loading="lazy" />
+                <img src="assets/images/categorias/inyeccion.webp" alt="Inyeccion" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Inyeccion</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -594,7 +617,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/tren-de-fuerza.svg" alt="Tren de Fuerza" loading="lazy" />
+                <img src="assets/images/categorias/tren-de-fuerza.webp" alt="Tren de Fuerza" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Tren de Fuerza</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -608,7 +631,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/partes-hidraulicas.svg" alt="Partes Hidraulicas" loading="lazy" />
+                <img src="assets/images/categorias/partes-hidraulicas.webp" alt="Partes Hidraulicas" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Partes Hidraulicas</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -622,7 +645,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/herramientas-de-ajuste.svg" alt="Herramientas de Ajuste" loading="lazy" />
+                <img src="assets/images/categorias/herramientas-de-ajuste.webp" alt="Herramientas de Ajuste" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Ajuste Tornillos y Bujes</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -636,7 +659,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/filtros-y-lubricantes.svg" alt="Filtros y Lubricantes" loading="lazy" />
+                <img src="assets/images/categorias/filtros-y-lubricantes.webp" alt="Filtros y Lubricantes" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Aceites, Filtros y Lubricantes</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -650,7 +673,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/monitores-y-arranques.svg" alt="Monitores y Arranques" loading="lazy" />
+                <img src="assets/images/categorias/monitores-y-arranques.webp" alt="Monitores y Arranques" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Monitores, Computadores y Partes electricas</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -664,7 +687,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/llantas-otr.svg" alt="LLantas y neumáticos" loading="lazy" />
+                <img src="assets/images/categorias/llantas-otr.webp" alt="LLantas y neumáticos" loading="lazy" />
                 <div class="product-card__body">
                   <h3>LLantas y neumáticos</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -678,7 +701,7 @@
               </article>
               <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
               <div class="product-card">
-                <img src="assets/images/categorias/miscelaneo.svg" alt="Repuestos generales" loading="lazy" />
+                <img src="assets/images/categorias/miscelaneo.webp" alt="Repuestos generales" loading="lazy" />
                 <div class="product-card__body">
                   <h3>Miscelaneos</h3>
                   <p class="product-card__reference">Alta Disponibilidad</p>
@@ -704,31 +727,31 @@
 <div class="brands__marquee" data-aos="fade-up" aria-label="Listado de marcas">
     <div class="brands__track">
 
-        <div class="brands__logo"><img src="assets/images/marcas/bosh.svg" alt="Logo Bosh" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/bosh.webp" alt="Logo Bosh" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/byg.svg" alt="Logo BYG" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/byg.webp" alt="Logo BYG" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/cat.svg" alt="Logo Caterpillar" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/cat.webp" alt="Logo Caterpillar" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/cgr.svg" alt="Logo CGR" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/cgr.webp" alt="Logo CGR" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/ctp.svg" alt="Logo CTP" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/ctp.webp" alt="Logo CTP" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/doosan.svg" alt="Logo Doosan" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/doosan.webp" alt="Logo Doosan" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/fsp.svg" alt="Logo FSP" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/fsp.webp" alt="Logo FSP" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/hitachi.svg" alt="Logo Hitachi" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/hitachi.webp" alt="Logo Hitachi" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/ipd.svg" alt="Logo IPD" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/ipd.webp" alt="Logo IPD" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/kmp.svg" alt="Logo KMP" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/kmp.webp" alt="Logo KMP" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/komatsu.svg" alt="Logo Komatsu" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/komatsu.webp" alt="Logo Komatsu" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/vematec.svg" alt="Logo Vematec" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/vematec.webp" alt="Logo Vematec" loading="lazy" /></div>
 
-        <div class="brands__logo"><img src="assets/images/marcas/vematrack.svg" alt="Logo Vematrack" loading="lazy" /></div>
+        <div class="brands__logo"><img src="assets/images/marcas/vematrack.webp" alt="Logo Vematrack" loading="lazy" /></div>
 
     </div>
 </div>
@@ -739,7 +762,7 @@
           </div>
           <div class="advisor__card row align-items-center g-5">
             <div class="col-lg-4 text-center" data-aos="fade-right">
-              <img class="advisor__image" src="assets/images/julian-montealegre-asesor.jpeg" alt="Foto de Julian Montealegre" loading="lazy" />
+              <img class="advisor__image" src="assets/images/julian-montealegre-asesor.webp" alt="Foto de Julian Montealegre" loading="lazy" />
             </div>
             <div class="col-lg-8" data-aos="fade-left">
               <h3 id="advisor-title">JULIAN MONTEALEGRE</h3>
@@ -769,9 +792,12 @@
       <div class="col-lg-3 footer-info">
 
         <div class="footer__brand">
-          <img src="assets/images/foot.png" 
-               alt="CaterTrack logo" 
-               class="footer__logo-image">
+          <picture>
+            <source srcset="assets/images/foot.webp" type="image/webp" />
+            <img src="assets/images/foot.png" 
+              alt="CaterTrack logo" 
+              class="footer__logo-image">
+          </picture>
         </div>
 
         <p>

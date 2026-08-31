@@ -188,17 +188,24 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   const popup = document.getElementById('promoPopup');
   const cerrar = document.getElementById('cerrarPopup');
+  const popupImage = popup?.querySelector('.popup-image');
   const shouldShowPopup = window.matchMedia('(min-width: 768px)').matches;
   const storageKey = 'catertrack-popup-dismissed-until';
 
   if (!popup || !cerrar || !shouldShowPopup) return;
 
   const dismissedUntil = Number(localStorage.getItem(storageKey) || 0);
-  const now = Date.now();
+  if (dismissedUntil > Date.now()) return;
 
-  if (dismissedUntil > now) return;
+  const showPopup = () => {
+    if (popupImage?.dataset.src) {
+      popupImage.src = popupImage.dataset.src;
+      delete popupImage.dataset.src;
+    }
+    popup.classList.add('active');
+  };
 
-  popup.classList.add('active');
+  window.addEventListener('scroll', showPopup, { once: true, passive: true });
 
   cerrar.addEventListener('click', () => {
     popup.classList.remove('active');
