@@ -84,6 +84,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initVisibleCarousels = () => {
+    const carousels = document.querySelectorAll('.carousel[data-bs-ride="carousel"]');
+
+    if (!carousels.length || !window.bootstrap?.Carousel) return;
+
+    const carouselInstances = Array.from(carousels, (carousel) => ({
+      element: carousel,
+      instance: window.bootstrap.Carousel.getOrCreateInstance(carousel)
+    }));
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      carouselInstances.forEach(({ instance }) => instance.pause());
+      return;
+    }
+
+    if (!window.IntersectionObserver) return;
+
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const carousel = carouselInstances.find(({ element }) => element === entry.target);
+        if (!carousel) return;
+
+        if (entry.isIntersecting) {
+          carousel.instance.cycle();
+        } else {
+          carousel.instance.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+
+    carouselInstances.forEach(({ element, instance }) => {
+      instance.pause();
+      visibilityObserver.observe(element);
+    });
+  };
+
   const initOfferCountdown = () => {
     if (!offerCountdown) return;
 
@@ -136,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   resetPositions();
   initCounters();
   initClientsMarquee();
+  initVisibleCarousels();
   initOfferCountdown();
   initRepuestoLinks();
 

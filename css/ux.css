@@ -396,7 +396,7 @@ section {
 
 .novedades-banner .carousel-control-prev,
 .novedades-banner .carousel-control-next {
-  top: 50%;
+  top: calc(50% - 1.5rem);
   bottom: auto;
   width: 3rem;
   height: 3rem;
@@ -404,8 +404,8 @@ section {
   border-radius: 50%;
   background: rgba(11, 31, 58, 0.82);
   opacity: 1;
-  transform: translateY(-50%);
-  transition: background-color 180ms ease, transform 180ms ease;
+  transform: none;
+  transition: background-color 180ms ease;
 }
 
 .novedades-banner .carousel-control-prev:hover,
@@ -413,7 +413,7 @@ section {
 .novedades-banner .carousel-control-prev:focus-visible,
 .novedades-banner .carousel-control-next:focus-visible {
   background: var(--color-primary);
-  transform: translateY(-50%) scale(1.08);
+  transform: none;
 }
 
 .novedades-banner .carousel-control-prev-icon,
@@ -465,12 +465,12 @@ section {
 .novedades-cards-carousel .carousel-control-next {
   width: 2.75rem;
   height: 2.75rem;
-  top: 50%;
+  top: calc(50% - 1.375rem);
   bottom: auto;
   border-radius: 50%;
   background: var(--color-primary);
   opacity: 1;
-  transform: translateY(-50%);
+  transform: none;
 }
 
 .novedades-cards-carousel .carousel-control-prev {
