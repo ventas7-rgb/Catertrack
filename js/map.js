@@ -1,5 +1,8 @@
 // Inicializa mapa usando Leaflet + OpenStreetMap
-document.addEventListener('DOMContentLoaded', function () {
+window.initCaterTrackMap = function () {
+  if (!window.L || document.getElementById('map')?.dataset.initialized) return;
+
+  document.getElementById('map').dataset.initialized = 'true';
   const locations = {
     'Bogotá': {
       coords: [4.599380575422542, -74.09611760567681],
@@ -131,4 +134,4 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBranchCard(city);
     });
   });
-});
+};

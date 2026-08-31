@@ -120,6 +120,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initLazyMap = () => {
+    const branches = document.getElementById('sucursales');
+    if (!branches) return;
+
+    const loadScript = (src) => new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+
+    const loadMap = () => {
+      const stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(stylesheet);
+
+      loadScript('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+        .then(() => loadScript('js/map.js?v=20260831'))
+        .then(() => window.initCaterTrackMap?.())
+        .catch(() => {});
+    };
+
+    if (!window.IntersectionObserver) {
+      loadMap();
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry], currentObserver) => {
+      if (!entry.isIntersecting) return;
+
+      currentObserver.unobserve(entry.target);
+      loadMap();
+    }, { rootMargin: '400px 0px' });
+
+    observer.observe(branches);
+  };
+
   const initOfferCountdown = () => {
     if (!offerCountdown) return;
 
@@ -173,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initClientsMarquee();
   initVisibleCarousels();
+  initLazyMap();
   initOfferCountdown();
   initRepuestoLinks();
 
