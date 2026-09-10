@@ -1,0 +1,74 @@
+---
+import CatalogLayout from '../../../layouts/CatalogLayout.astro';
+import { categorias, productos } from '../../../data/catalogo';
+import { base, landingBase } from '../../../utils/base';
+
+export function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: {
+      categoria: producto.categoria,
+      subcategoria: producto.subcategoria,
+      slug: producto.slug,
+    },
+  }));
+}
+
+const { categoria, subcategoria, slug } = Astro.params;
+const producto = productos.find(
+  (item) =>
+    item.categoria === categoria &&
+    item.subcategoria === subcategoria &&
+    item.slug === slug
+);
+
+if (!producto) {
+  throw new Error('Producto no encontrado');
+}
+
+const categoriaData = categorias.find((item) => item.slug === categoria);
+const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug === subcategoria);
+---
+
+<CatalogLayout title={`${producto.nombre} | CaterTrack`} description={producto.descripcion} activeCategoria={categoria}>
+  <main id="main-content" class="product-detail" aria-label="Detalle del producto">
+    <section class="product-detail__intro">
+      <div class="container">
+        <div class="product-detail__breadcrumb">
+          <a href={`${landingBase}#inicio`}>Inicio</a>
+          <span>/</span>
+          <a href={`${base}${categoria}`}>{categoriaData?.nombre ?? categoria}</a>
+          <span>/</span>
+          <a href={`${base}${categoria}/${subcategoria}`}>{subcategoriaData?.nombre ?? subcategoria}</a>
+          <span>/</span>
+          <span>{producto.nombre}</span>
+        </div>
+
+        <div class="product-detail__layout">
+          <div class="product-detail__image">
+            <img src={producto.foto || `${base}assets/images/products/placeholder.webp`} alt={producto.nombre} loading="lazy" />
+          </div>
+          <div class="product-detail__content">
+            <a class="product-detail__back" href={`${base}${categoria}/${subcategoria}`}>
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Volver
+            </a>
+            <h1>{producto.nombre}</h1>
+            <p class="product-detail__description">{producto.descripcion}</p>
+
+            <dl class="product-detail__specifications">
+              <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+              <div><dt>Referencia</dt><dd>{producto.referencia}</dd></div>
+              <div><dt>Aplicación</dt><dd>{producto.aplicacion}</dd></div>
+              <div><dt>Disponibilidad</dt><dd>{producto.disponibilidad ?? 'Por confirmar'}</dd></div>
+            </dl>
+
+            <a class="product-detail__cta" href="mailto:ventas7@catekomsas.com?subject=Consulta%20producto%20CaterTrack">
+              Solicitar cotización
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</CatalogLayout>

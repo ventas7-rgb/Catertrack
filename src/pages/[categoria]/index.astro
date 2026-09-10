@@ -1,0 +1,57 @@
+---
+import CatalogLayout from '../../layouts/CatalogLayout.astro';
+import SubcategoryFilters from '../../components/SubcategoryFilters.astro';
+import { categorias, productos } from '../../data/catalogo';
+import { base } from '../../utils/base';
+
+export function getStaticPaths() {
+  return categorias.map((categoria) => ({ params: { categoria: categoria.slug } }));
+}
+
+const { categoria } = Astro.params;
+const categoriaData = categorias.find((item) => item.slug === categoria);
+const items = productos.filter((producto) => producto.categoria === categoria);
+---
+
+<CatalogLayout title={`${categoriaData ? categoriaData.nombre : 'Categoría'} | CaterTrack`} activeCategoria={categoria}>
+  <main id="main-content" aria-label={`Catálogo de ${categoriaData?.nombre ?? 'categoría'}`}>
+    <section class="catalog-products">
+      <div class="container">
+        <div class="catalog-section-heading">
+          <div>
+            <span class="catalog-hero__eyebrow">Explora por componente</span>
+            <h2>Encuentra el repuesto que necesitas</h2>
+          </div>
+          <span class="catalog-result">{items.length} productos disponibles</span>
+        </div>
+
+        {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} />}
+
+        <div class="product-grid">
+          {items.map((producto) => (
+            <article class="product-card" data-subcategory={producto.subcategoria}>
+              <a href={`${base}${categoria}/${producto.subcategoria}/${producto.slug}`} class="product-card__visual" aria-label={`Ver ${producto.nombre}`}>
+                <img src={producto.foto || `${base}assets/images/products/placeholder.webp`} alt={producto.nombre} loading="lazy" />
+              </a>
+              <div class="product-card__content">
+                <span class="product-card__category">{producto.subcategoria}</span>
+                <span class="product-card__availability"><strong>Disponibilidad:</strong> {producto.disponibilidad ?? 'Por confirmar'}</span>
+                <h3>{producto.nombre}</h3>
+                <dl class="product-card__details">
+                  <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+                  <div><dt>Aplicación</dt><dd>{producto.aplicacion}</dd></div>
+                </dl>
+                <p class="product-card__description">{producto.descripcion}</p>
+                <a class="product-card__cta" href={`https://wa.me/573132416739?text=${encodeURIComponent(`Hola CaterTrack, quiero cotizar ${producto.nombre}`)}`} target="_blank" rel="noopener noreferrer">
+                  Solicitar cotización
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+</CatalogLayout>

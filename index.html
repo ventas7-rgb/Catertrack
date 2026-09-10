@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="o_89nr69EpbyMInXBXwStKSlHW-tVJTGiVID3yIcu_Q" />
+    <meta
+      name="description"
+      content="CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes."
+    />
+    <meta
+      name="keywords"
+      content="Repuestos Caterpillar, Repuestos maquinaria pesada, KMP, IPD, VemaTrack, Herramientas BYG, Tren de rodaje"
+    />
+    <meta property="og:title" content="CaterTrack | Repuestos para maquinaria pesada" />
+    <meta property="og:description" content="CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://catertracksas.co/" />
+    <meta property="og:image" content="https://catertracksas.co/assets/images/company1.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CaterTrack | Repuestos para maquinaria pesada" />
+    <meta name="twitter:description" content="Especialistas en repuestos para maquinaria pesada con asesoría rápida y disponibilidad real." />
+    <meta name="twitter:image" content="https://catertracksas.co/assets/images/company1.webp" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://catertracksas.co/" />
+    <title>CaterTrack | Repuestos para maquinaria pesada</title>
+    <link rel="icon" type="image/png" href="assets/images/Favicon-catekom.ico" />
+    <meta name="theme-color" content="#0B1F3A" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Organization", "LocalBusiness"],
+        "name": "CaterTrack",
+        "url": "https://catertracksas.co/",
+        "logo": "https://catertracksas.co/assets/images/Favicon-catekom.ico",
+        "description": "CaterTrack ofrece repuestos para maquinaria pesada, asesoría especializada y disponibilidad real para Caterpillar, Komatsu y otras marcas líderes.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CO"
+        },
+        "sameAs": [
+          "https://co.linkedin.com/company/catekomsas",
+          "https://www.instagram.com/catekom.co/",
+          "https://www.facebook.com/Catekom/?locale=es_LA"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ux.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <style>
+      .map-container { height: 200px; min-height: 280px; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 9px; }
+
+      /* Presentación de marcas */
+      #distribuciones {
+        scroll-margin-top: 92px;
+        background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+      }
+      #distribuciones .section__heading { margin-bottom: 2.25rem; }
+      #distribuciones .section__heading h2 { position: relative; display: inline-block; }
+      #distribuciones .section__heading h2::after {
+        content: "";
+        display: block;
+        width: 58px;
+        height: 4px;
+        margin: .75rem auto 0;
+        border-radius: 99px;
+        background: #f5b400;
+      }
+      #distribuciones .brands__marquee {
+        overflow: hidden;
+        padding: .75rem .25rem 1.25rem;
+        mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      }
+      #distribuciones .brands__track {
+        display: flex;
+        align-items: stretch;
+        gap: 1.25rem;
+      }
+      #distribuciones .brands__logo {
+        flex: 0 0 210px;
+        min-height: 112px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .7rem;
+        padding: 1rem;
+        border: 1px solid #e3e8ef;
+        border-radius: 14px;
+        background: rgba(255,255,255,.96);
+        box-shadow: 0 8px 22px rgba(11,31,58,.08);
+        color: #0b1f3a;
+        font-family: Montserrat, sans-serif;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-align: center;
+        text-decoration: none;
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+      #distribuciones .brands__logo:hover,
+      #distribuciones .brands__logo:focus-visible {
+        transform: translateY(-6px);
+        border-color: #f5b400;
+        box-shadow: 0 14px 30px rgba(11,31,58,.15);
+        color: #0b1f3a;
+      }
+      #distribuciones .brands__logo img {
+        width: 100%;
+        height: 100%;
+        max-height: 88px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        object-fit: contain;
+      }
+      @media (max-width: 576px) {
+        #distribuciones .brands__logo { flex-basis: 175px; min-height: 105px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="page-loading" id="page-loading" aria-hidden="true">
+      <div class="page-loading__ring"></div>
+    </div>
+
+    <div id="promoPopup" class="popup">
+    <div class="popup-content">
+
+        <button class="popup-close" id="cerrarPopup">&times;</button>
+        <a href="https://wa.me/573001234567?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n."
+           target="_blank"
+           rel="noopener noreferrer">
+              <img data-src="assets/images/Popup.webp"
+                 alt="Promoción de CaterTrack para repuestos y asesoría especializada"
+                 class="popup-image" loading="lazy" decoding="async"> 
+
+        </a>
+
+    </div>
+</div>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+    
+    <div class="header__contact">
+
+    <a class="header__contact-item"
+       href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n."
+       target="_blank">
+
+        <i class="fa-brands fa-whatsapp"></i>
+        <strong>Línea móvil y WhatsApp: 313 241 6739</strong>
+    </a>
+
+    <a class="header__contact-item"
+       href="mailto:ventas7@catekomsas.com">
+
+        <i class="fas fa-envelope"></i>
+        <strong>ventas7@catekomsas.com</strong>
+    </a>
+
+</div>
+      </div>
+    </header>
+
+    <header class="header" id="top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg align-items-center" aria-label="Navegación principal">
+          <div class="navbar-brand header__logo" aria-label="Logo CaterTrack">
+            <picture>
+              <source srcset="assets/images/foot.webp" type="image/webp" />
+              <img src="assets/images/foot.png" alt="CaterTrack logo" class="header__logo-image" />
+            </picture>
+          </div>
+
+          <div class="d-flex align-items-center ms-auto header__actions">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Abrir menú"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav header__menu">
+              <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#novedades">Novedades</a></li>
+              <li class="nav-item"><a class="nav-link" href="#productos">Repuestos Maquinaria Pesada</a></li>
+              <li class="nav-item"><a class="nav-link" href="#sucursales">Sucursales</a></li>
+              <li class="nav-item"><a class="nav-link" href="#distribuciones">Distribuciones</a></li>
+              <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+              <li class="nav-item"><a class="nav-link" href="#trabaja">Contacto</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="inicio">
+        <video class="hero__video" autoplay loop muted playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/videos/exca.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__overlay"></div>
+        <div class="container hero__content">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-7" data-aos="fade-right">
+              <p class="hero__eyebrow">Especialistas en repuestos industriales</p>
+              <h1>Repuestos y soluciones para maquinaria pesada</h1>
+              <p class="hero__text">
+                Especialistas en repuestos para maquinaria Caterpillar®, Komatsu®, Case, John Deere y otras marcas líderes. Calidad garantizada, disponibilidad inmediata y asesoría especializada.
+              </p>
+              <div class="hero__trust-row" role="list" aria-label="Indicadores de confianza">
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  <span>+28 años de experiencia</span>
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+                  <span>+25.000 referencias disponibles</span>
+                </div>
+                <div class="hero__trust-item" role="listitem">
+                  <i class="fa-solid fa-award" aria-hidden="true"></i>
+                  <span>Distribuidores de marcas reconocidas</span>
+                </div>
+              </div>
+              <div class="hero__actions">
+                <a class="btn btn-warning hero__btn hero__btn--primary" href="#advisor-title">Solicitar cotización</a>
+                <a class="btn btn-outline-light hero__btn hero__btn--secondary" href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">Hablar con un asesor</a>
+              </div>
+            </div>
+            <div class="col-lg-5" data-aos="fade-left">
+              <div id="heroImageCarousel" class="carousel slide hero__image-card" data-bs-ride="carousel" aria-label="Galería de imágenes">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <picture>
+                      <source srcset="assets/images/company1.webp" type="image/webp" />
+                      <img src="assets/images/company1.png" class="d-block w-100" alt="Motor para maquinaria pesada" fetchpriority="high" />
+                    </picture>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/images/company2.webp" class="d-block w-100" alt="Bomba industrial para maquinaria pesada" loading="lazy" />
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroImageCarousel" data-bs-slide="prev" aria-label="Imagen anterior">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroImageCarousel" data-bs-slide="next" aria-label="Siguiente imagen">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#heroImageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Mostrar primera imagen"></button>
+                  <button type="button" data-bs-target="#heroImageCarousel" data-bs-slide-to="1" aria-label="Mostrar segunda imagen"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+           <section class="branches section" id="novedades">
+             <div class="container">
+               <div class="section__heading" data-aos="fade-up">
+                 <h2>Novedades</h2>
+                 <p class="section__subtitle">Nuevas piezas de alto desempeño para tu maquinaria pesada.</p>
+               </div>
+               <!-- Ajusta el tiempo en milisegundos: 2500 = 2.5 segundos. data-bs-pause="false" evita pausar al pasar el cursor. -->
+               <div id="novedadesCarousel" class="carousel slide novedades-banner" data-bs-ride="carousel" data-bs-interval="2500" data-bs-pause="false">
+    <div class="novedades-offer-countdown" aria-label="Oferta válida por tiempo limitado">
+      <span class="novedades-offer-countdown__label">OFERTA TERMINA EN</span>
+      <span class="novedades-offer-countdown__timer" id="novedadesOfferCountdown" role="timer" aria-live="polite">7d 00:00:00</span>
+    </div>
+
+    <div class="carousel-inner">
+      
+
+        <div class="carousel-item active">
+            <picture>
+              <source srcset="assets/images/banner/cadenabanner.webp" type="image/webp" />
+              <img src="assets/images/banner/cadenabanner.svg" alt="Novedad 1">
+            </picture>
+        </div>
+
+        <div class="carousel-item">
+            <picture>
+              <source srcset="assets/images/banner/sprocketbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/sprocketbanner.svg" alt="Novedad 2">
+            </picture>
+        </div>
+
+        <div class="carousel-item">
+            <picture>
+              <source srcset="assets/images/banner/carrilesbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/carrilesbanner.svg" alt="Novedad 3">
+            </picture>
+        </div>
+
+        <div class="carousel-item">
+            <picture>
+              <source srcset="assets/images/banner/tensorabanner.webp" type="image/webp" />
+              <img src="assets/images/banner/tensorabanner.svg" alt="Novedad 4">
+            </picture>
+        </div>
+
+        <div class="carousel-item">
+            <picture>
+              <source srcset="assets/images/banner/tejasbanner.webp" type="image/webp" />
+              <img src="assets/images/banner/tejasbanner.svg" alt="Novedad 5">
+            </picture>
+        </div>
+
+    </div>
+
+    <!-- Botón invisible pero funcional: no agregar d-none porque eliminaría la zona de clic. -->
+    <a class="btn btn-warning novedades-whatsapp-button" href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Hablar por WhatsApp
+    </a>
+
+    <!-- Flecha izquierda -->
+    <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#novedadesCarousel"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <!-- Flecha derecha -->
+    <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#novedadesCarousel"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
+</div>
+               <div id="novedadesCardsCarousel" class="carousel slide novedades-cards-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+                 <div class="carousel-inner">
+                   <div class="carousel-item active">
+                     <div class="row g-4">
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/martillo.webp" alt="MARTILLO HIDRAULICO" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">MARTILLO HIDRAULICO</h3>
+                             <p class="novedad-card__text">El martillo hidráulico JOBS forma parte de la gama de martillos hidráulicos JOBS, diseñado para trabajar con <strong>excavadoras de 18 a 26 toneladas</strong>.</p>
+                           </div>
+                         </article>
+                       </div>
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/Publicidad.webp" alt="Detalle por compras CaterTrack" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">DETALLES</h3>
+                             <p class="novedad-card__text">Por compras superiores a <strong>$2.000.000</strong> lleva un detalle de CaterTrack.</p>
+                           </div>
+                         </article>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="carousel-item">
+                     <div class="row g-4">
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/strips.webp" alt="Tren de rodaje Vematrack" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">STRIPS</h3>
+                             <p class="novedad-card__text"><strong>Descuentos especiales en strips para maquinaria pesada.</strong></p>
+                           </div>
+                         </article>
+                       </div>
+                       <div class="col-md-6" data-aos="fade-up">
+                         <article class="novedad-card">
+                           <div class="novedad-card__image">
+                             <img src="assets/images/novedades/vacante.webp" alt="Partes hidráulicas para maquinaria pesada" loading="lazy" decoding="async" />
+                           </div>
+                           <div class="novedad-card__body">
+                             <p class="novedad-card__eyebrow">Novedad</p>
+                             <h3 class="novedad-card__title">¿Buscas Empleo?</h3>
+                             <p class="novedad-card__text">Estamos en búsqueda de nuevos talentos para unirnos a nuestro equipo.</p>
+                           </div>
+                         </article>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <button class="carousel-control-prev" type="button" data-bs-target="#novedadesCardsCarousel" data-bs-slide="prev" aria-label="Novedades anteriores">
+                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 </button>
+                 <button class="carousel-control-next" type="button" data-bs-target="#novedadesCardsCarousel" data-bs-slide="next" aria-label="Siguientes novedades">
+                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                 </button>
+               </div>
+             </div>
+           </section>
+           <section class="branches section" id="sucursales">
+          <div class="container">
+            <div class="section__heading" data-aos="fade-up">
+              <h2>Encuentra nuestras oficinas en Colombia</h2>            
+            </div>
+            <div class="row g-4">
+              <div class="col-12 d-flex justify-content-center" data-aos="fade-right">
+                <div id="map" class="map-container map-container--compact" role="region" aria-label="Mapa de sucursales"></div>
+              </div>
+              <P class="section__subtitle">
+                Haz clic en una ciudad para ver su ubicación
+              </P>
+               <p class="section__eyebrow" aria-label="Sucursales disponibles">
+                <button class="branch-city-link" type="button" data-city="Bogotá">Bogotá</button>
+                <button class="branch-city-link" type="button" data-city="Medellín">Medellín</button>
+                <button class="branch-city-link" type="button" data-city="Barranquilla">Barranquilla</button>
+                <button class="branch-city-link" type="button" data-city="Neiva">Neiva</button>
+                <button class="branch-city-link" type="button" data-city="Meta">Meta</button>
+                <button class="branch-city-link" type="button" data-city="Yopal">Yopal</button>
+              </p>
+              <div class="col-12" data-aos="fade-up">
+                <div class="branch-card" id="branchDetails" role="status" aria-live="polite">
+                  <div class="branch-card__content">
+                    <div class="branch-card__text">
+                      <div class="branch-card__icon"><i class="fa-solid fa-location-dot"></i></div>
+                      <p class="branch-card__label">Sucursal destacada</p>
+                      <h3>Bogotá</h3>
+                      <p class="branch-card__intro">Explora la ubicación de Bogotá y revisa la información disponible para la sucursal.</p>
+                      <div class="branch-card__details">
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Dirección</span>
+                          <p class="branch-card__detail-value" data-branch-field="address">Cra. 25 #2a-87, Los Mártires, Bogotá, Cundinamarca.</p>
+                        </div>
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Horario</span>
+                          <p class="branch-card__detail-value" data-branch-field="hours">Lunes a viernes 8:00 a 5:30 Sábados 8:30 a 12:30</p>
+                        </div>
+                        <div class="branch-card__detail">
+                          <span class="branch-card__detail-label">Contacto</span>
+                          <p class="branch-card__detail-value" data-branch-field="contact">+57 313 2416739</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="branch-card__media" aria-hidden="true">
+                      <img src="assets/images/sucursales/catertrack.webp" alt="Sucursal seleccionada de CaterTrack" loading="lazy" decoding="async" hidden />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </section>
+
+      <section class="about section" id="nosotros">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+              <div class="about__media" aria-label="Video institucional de CaterTrack">
+                <video
+                  class="about__image"
+                  src="assets/videos/portada.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Video institucional de CaterTrack"
+                ></video>
+              </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+              <p class="section__eyebrow">Sobre CaterTrack</p>
+              <h2>Con más de 25 años de trayectoria</h2>
+              <p>
+              Somos una compañía consolidada como referente en el suministro de partes y repuestos para los sectores de construcción, minería, hidrocarburos, agricultura, marítimo y energético.
+              Contamos con un equipo humano de más de 100 profesionales, comprometidos en brindarle un servicio de excelencia en cada etapa del proceso. Adicionalmente, nuestra amplia red de sucursales a lo largo de todo el territorio colombiano nos permite garantizarle disponibilidad inmediata, sin importar en qué rincón del país se encuentre.
+              Hoy en día, somos uno de los grupos empresariales más grandes de Colombia en partes para repuestos y seguimos trabajando con firmeza para seguir creciendo y aportando al desarrollo del país.
+              <p>
+            </div>
+          </div>
+          <div class="row g-4 mt-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+              <article class="stat-card">
+                <div class="stat-card__number" data-counter="28" data-prefix="+">0</div>
+                <h3>Años de experiencia</h3>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+              <article class="stat-card">
+                <div class="stat-card__number" data-counter="25000" data-prefix="+">0</div>
+                <h3>Referencias</h3>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+              <article class="stat-card">
+                <div class="stat-card__number" data-counter="100" data-suffix="%">0</div>
+                <h3>Entrega nacional</h3>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+              <article class="stat-card">
+                <div class="stat-card__number" data-counter="24" data-suffix="/7">0</div>
+                <h3>Asesoría especializada</h3>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products section section--alt" id="productos">
+        <div class="container">
+          <div class="section__heading" data-aos="fade-up">
+            <p class="section__eyebrow">Nuestros productos</p>
+            <h2>Soluciones para cada necesidad</h2>
+          </div>
+          <div class="row g-4">
+            
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100" data-card data-brand="caterpillar" data-category="herramientas" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/tren-de-rodaje.webp" alt="Tren de rodaje - Vematrack" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Tren de rodaje - Vematrack</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Para Excavadoras y Bulldozer de 12 a 45 Toneladas.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/tren-de-rodaje/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/repuestos-de-motor-ipd.webp" alt="Repuestos de motor" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Repuestos Motores Caterpillar y Cummins</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
+                  <div class="product-card__actions">
+                  <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;" aria-label="Abrir catálogo IPD">catálogo</a>
+                  <a href="/repuestos-ipd/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+             </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200" data-card data-brand="komatsu" data-category="motor" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/repuestos-de-motor-kmp.webp" alt="Repuestos de motor" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Repuestos Motores Komatsu y John Deere</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Soluciones de alto desempeño para mantenimiento y recuperación de potencia.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;" aria-label="Abrir catálogo KMP">catálogo</a>
+                    <a href="/repuestos-kmp/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </article>
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300" data-card data-brand="caterpillar" data-category="rodaje" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/herramientas-de-corte.webp" alt="Tren de rodaje" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Herramientas de Corte</h3>
+                  <h3>BYG Y VEMATRACK</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Cuchillas, Cantoneras, Dientes y Bases.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/herramientas-de-corte/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/inyeccion.webp" alt="Inyeccion" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Inyeccion</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Inyectores y Bombas de Inyección.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/inyeccion/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/tren-de-fuerza.webp" alt="Tren de Fuerza" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Tren de Fuerza</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Cadenas Tandem, Engranajes y Componentes de Transmisión.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/tren-de-fuerza/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/partes-hidraulicas.webp" alt="Partes Hidraulicas" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Partes Hidraulicas</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Cartuchos Hidraulicops, Bombas Hidrauliacas, Mangueras.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/partes-hidraulicas/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/herramientas-de-ajuste.webp" alt="Herramientas de Ajuste" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Ajuste Tornillos y Bujes</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Strips, Tornillos, Bujes.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/ajuste/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/filtros-y-lubricantes.webp" alt="Filtros y Lubricantes" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Aceites, Filtros y Lubricantes</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Filtros, Aceites, Lubricantes.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/lubricantes/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/monitores-y-arranques.webp" alt="Monitores y Arranques" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Monitores, Computadores y Partes electricas</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Monitores, Computadores, Partes eléctricas.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/monitores/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/llantas-otr.webp" alt="LLantas y neumáticos" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>LLantas y neumáticos</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>LLantas y neumáticos para maquinaria pesada.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/llantas/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+              </article>
+              <article class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500" data-card data-brand="caterpillar" data-category="lubricacion" data-availability="disponible">
+              <div class="product-card">
+                <img src="assets/images/categorias/miscelaneo.webp" alt="Repuestos generales" loading="lazy" />
+                <div class="product-card__body">
+                  <h3>Miscelaneos</h3>
+                  <p class="product-card__reference">Alta Disponibilidad</p>
+                  <p>Turbos, bomba de agua y aceite, fancluth, terminales y manometros.</p>
+                  <div class="product-card__actions">
+                    <a href="#" class="btn btn-outline-primary product-card__action" onclick="abrirPDF('assets/pdf/soon.pdf'); return false;">catálogo</a>
+                    <a href="/miscelaneos/" class="btn btn-warning product-card__action">Buscar repuesto</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+     <!-- Sección de marcas -->
+      <section class="brands section" id="distribuciones" aria-labelledby="brands-title">
+        <div class="container">
+          <div class="section__heading" data-aos="fade-up">
+            <p class="section__eyebrow"></p>
+            <h2 id="brands-title">Marcas</h2>
+          </div>
+<div class="brands__marquee" data-aos="fade-up" aria-label="Listado de marcas">
+    <div class="brands__track">
+
+        <div class="brands__logo"><img src="assets/images/marcas/bosh.webp" alt="Logo Bosh" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/byg.webp" alt="Logo BYG" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/cat.webp" alt="Logo Caterpillar" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/cgr.webp" alt="Logo CGR" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/ctp.webp" alt="Logo CTP" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/doosan.webp" alt="Logo Doosan" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/fsp.webp" alt="Logo FSP" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/hitachi.webp" alt="Logo Hitachi" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/ipd.webp" alt="Logo IPD" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/kmp.webp" alt="Logo KMP" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/komatsu.webp" alt="Logo Komatsu" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/vematec.webp" alt="Logo Vematec" loading="lazy" /></div>
+
+        <div class="brands__logo"><img src="assets/images/marcas/vematrack.webp" alt="Logo Vematrack" loading="lazy" /></div>
+
+    </div>
+</div>
+      </section>
+
+      <section class="advisor section" aria-labelledby="advisor-title">
+        <div class="container">
+          </div>
+          <div class="advisor__card row align-items-center g-5">
+            <div class="col-lg-4 text-center" data-aos="fade-right">
+              <img class="advisor__image" src="assets/images/julian-montealegre-asesor.webp" alt="Foto de Julian Montealegre" loading="lazy" />
+            </div>
+            <div class="col-lg-8" data-aos="fade-left">
+              <h3 id="advisor-title">JULIAN MONTEALEGRE</h3>
+              <p>
+                Nuestro equipo está listo para brindarle asesoría personalizada y ayudarle a encontrar el repuesto adecuado para su maquinaria.
+              </p>
+              <div class="advisor__contact-list">
+                <a href="tel:+573132416739"><i class="fa-solid fa-phone"></i> +57 313 241 6739</a>
+                <a href="mailto:ventas7@catekomsas.com"><i class="fa-solid fa-envelope"></i> ventas7@catekomsas.com</a>
+                <a href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+              </div>
+              <a class="btn btn-warning advisor__btn" href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">Hablar con el asesor</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+<footer class="footer" id="trabaja">
+
+  <div class="container">
+
+    <div class="row footer-content">
+
+      <!-- Logo y descripción -->
+      <div class="col-lg-3 footer-info">
+
+        <div class="footer__brand">
+          <picture>
+            <source srcset="assets/images/foot.webp" type="image/webp" />
+            <img src="assets/images/foot.png" 
+              alt="CaterTrack logo" 
+              class="footer__logo-image">
+          </picture>
+        </div>
+
+        <p>
+          Especialistas en repuestos para maquinaria pesada, con soluciones rápidas y asesoría técnica especializada.
+        </p>
+
+      </div>
+
+
+      <!-- Productos -->
+      <div class="col-lg-3 footer-links">
+
+        <h3>Contacto</h3>
+
+        <ul>
+          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Recursoshumanos@catekomsas.com&su=Hoja%20de%20vida%20CaterTrack" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope" aria-hidden="true"></i>. recursoshumanos@catekomsas.com</a></li>
+          
+          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Compras@catekomsas.com&su=Hoja%20de%20vida%20CaterTrack" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope" aria-hidden="true"></i>. compras@catekomsas.com</a></li>
+          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Cartera@catekomsas.com&su=Hoja%20de%20vida%20CaterTrack" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope  " aria-hidden="true"></i>. cartera@catekomsas.com</a></li>
+          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Ventas7@catekomsas.com&su=Hoja%20de%20vida%20CaterTrack" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-envelope" aria-hidden="true"></i>.  ventas7@catekomsas.com</a></li>
+        </ul>
+
+      </div>
+
+
+      <!-- Redes -->
+      <div class="col-lg-2 footer-links">
+
+        <h3>Redes</h3>
+
+        <ul>
+
+          <li>
+            <a href="https://co.linkedin.com/company/catekomsas" 
+               target="_blank">
+               <i class="fab fa-linkedin" aria-hidden="true"></i>
+               <span>LinkedIn</span>
+            </a>
+          </li>
+
+
+          <li>
+           <a href="https://www.instagram.com/catekom.co/" 
+               target="_blank">
+               <i class="fab fa-instagram" aria-hidden="true"></i>
+               <span>Instagram</span>
+            </a>
+          </li>
+
+
+          <li>
+            <a href="https://www.facebook.com/Catekom/?locale=es_LA" 
+               target="_blank">
+               <i class="fab fa-facebook" aria-hidden="true"></i>
+               <span>Facebook</span>
+            </a>
+          </li>
+
+           <li>
+            <a href="https://www.tiktok.com/@catekom_sas" 
+               target="_blank">
+               <i class="fab fa-tiktok" aria-hidden="true"></i>
+               <span>Tiktok</span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Trabajo -->
+      <div class="col-lg-4 footer-links">
+
+        <h3>Trabaja con nosotros</h3>
+
+        <p>
+          ¿Quieres formar parte de nuestro equipo?
+        </p>
+
+
+        <a class="footer-email"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=Recursoshumanos@catekomsas.com&su=Hoja%20de%20vida%20CaterTrack"
+           target="_blank">
+
+           Enviar hoja de vida
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="footer__bottom">
+
+      <p>
+        © 2026 CaterTrack. Todos los derechos reservados guiño, guiño.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+</footer>
+
+<!-- Botón volver arriba -->
+<a class="back-to-top" href="#top" aria-label="Volver arriba">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
+
+<!-- Botón WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/573132416739?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20CaterTrack.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="js/main.js?v=20260722"></script>
+<script src="js/ux.js?v=20260722"></script>
+<!-- Modal PDF -->
+<div id="pdfModal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Visor de brochure PDF">
+  <div class="pdf-modal-content">
+    <button class="cerrar-pdf" onclick="cerrarPDF()" aria-label="Cerrar visor PDF">✕</button>
+    <iframe id="visorPDF" title="Visor de brochure PDF"></iframe>
+  </div>
+</div>
+
+<script src="js/pdf.js"></script>
+
+</body>
+</html>

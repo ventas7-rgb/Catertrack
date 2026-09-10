@@ -1,0 +1,30 @@
+---
+import { base } from '../utils/base';
+
+interface Props {
+  categoriaSlug: string;
+  subcategorias: { slug: string; nombre: string }[];
+  activeSlug?: string;
+}
+
+const { categoriaSlug, subcategorias, activeSlug } = Astro.props;
+---
+
+<nav class="subcategory-filters" aria-label="Filtrar por subcategoría">
+  <a
+    class:list={['subcategory-filter', { 'is-active': !activeSlug }]}
+    href={`${base}${categoriaSlug}/`}
+    aria-current={!activeSlug ? 'page' : undefined}
+  >
+    Todos
+  </a>
+  {subcategorias.map((subcategoria) => (
+    <a
+      class:list={['subcategory-filter', { 'is-active': subcategoria.slug === activeSlug }]}
+      href={`${base}${categoriaSlug}/${subcategoria.slug}/`}
+      aria-current={subcategoria.slug === activeSlug ? 'page' : undefined}
+    >
+      {subcategoria.nombre}
+    </a>
+  ))}
+</nav>
