@@ -58,11 +58,16 @@ const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug =
             <dl class="product-detail__specifications">
               <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
               <div><dt>Referencia</dt><dd>{producto.referencia}</dd></div>
-              <div><dt>Aplicación</dt><dd>{producto.aplicacion}</dd></div>
+              <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
               <div><dt>Disponibilidad</dt><dd>{producto.disponibilidad ?? 'Por confirmar'}</dd></div>
             </dl>
 
-            <a class="product-detail__cta" href="mailto:ventas7@catekomsas.com?subject=Consulta%20producto%20CaterTrack">
+            <a
+              class="product-detail__cta"
+              href={`https://wa.me/573132416739?text=${encodeURIComponent(`Hola CaterTrack, quiero cotizar ${producto.nombre}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Solicitar cotización
               <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </a>

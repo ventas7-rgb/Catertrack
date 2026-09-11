@@ -1,8 +1,10 @@
 ---
 import CatalogLayout from '../../../layouts/CatalogLayout.astro';
 import SubcategoryFilters from '../../../components/SubcategoryFilters.astro';
+import MachineSearch from '../../../components/MachineSearch.astro';
 import { categorias, productos } from '../../../data/catalogo';
 import { base } from '../../../utils/base';
+import { normalizeText } from '../../../utils/text';
 
 export function getStaticPaths() {
   return categorias.flatMap((categoria) =>
@@ -34,9 +36,19 @@ const items = productos.filter(
 
         {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} activeSlug={subcategoria} />}
 
+        <MachineSearch />
+
         <div class="product-grid">
           {items.map((producto) => (
-            <article class="product-card">
+            <article
+              class="product-card"
+              data-aplicaciones={normalizeText((producto.aplicaciones || []).join('|'))}
+            >
+              <a
+                class="product-card__cover-link"
+                href={`${base}${categoria}/${subcategoria}/${producto.slug}`}
+                aria-label={`Ver detalles de ${producto.nombre}`}
+              ></a>
               <div class="product-card__visual">
                 <img src={producto.foto || `${base}assets/images/products/placeholder.webp`} alt={producto.nombre} loading="lazy" />
               </div>
@@ -46,10 +58,15 @@ const items = productos.filter(
                 <h3>{producto.nombre}</h3>
                 <dl class="product-card__details">
                   <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
-                  <div><dt>Aplicación</dt><dd>{producto.aplicacion}</dd></div>
+                  <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
                 </dl>
                 <p class="product-card__description">{producto.descripcion}</p>
-                <a class="product-card__cta" href={`${base}${categoria}/${subcategoria}/${producto.slug}`}>
+                <a
+                  class="product-card__cta"
+                  href={`https://wa.me/573132416739?text=${encodeURIComponent(`Hola CaterTrack, quiero cotizar ${producto.nombre}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Solicitar cotización
                   <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -60,4 +77,8 @@ const items = productos.filter(
       </div>
     </section>
   </main>
+
+  <Fragment slot="scripts">
+    <script src={`${base}js/machine-filter.js`}></script>
+  </Fragment>
 </CatalogLayout>

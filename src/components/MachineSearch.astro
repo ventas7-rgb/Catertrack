@@ -1,0 +1,24 @@
+---
+// Cajita para filtrar, dentro de un listado ya renderizado, los productos
+// que aplican a una máquina/modelo específico (ej: "CAT 320", "PC200").
+// El filtrado ocurre en el navegador — ver public/js/machine-filter.js.
+// Este componente solo pinta el input y el mensaje de "sin resultados".
+---
+
+<div class="machine-search">
+  <label for="machine-search-input" class="machine-search__label">
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    Buscar por máquina
+  </label>
+  <input
+    type="search"
+    id="machine-search-input"
+    class="machine-search__input"
+    placeholder="Ej: CAT 320, Komatsu PC200..."
+    autocomplete="off"
+    aria-describedby="machine-search-empty"
+  />
+  <p class="machine-search__empty" id="machine-search-empty" hidden>
+    No encontramos productos para esa máquina. Verifica el modelo o contáctanos por WhatsApp.
+  </p>
+</div>
