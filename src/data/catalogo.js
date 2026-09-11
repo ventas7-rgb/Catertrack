@@ -117,17 +117,20 @@ export const categorias = [
 //   referencia: '...',
 // }
 export const productos = [
-  {
-  slug: 'cadena-cat-320-38-eslabones',
-  nombre: 'Cadena CAT 320 (38 eslabones)',
+{   
+  slug: 'cadena-excavadora-320',
+  nombre: 'Cadena excavadora 320',
   categoria: 'tren-de-rodaje',
   subcategoria: 'cadena',
   marca: 'CAT',
   aplicaciones: ['CAT 320', 'CAT 320D', 'CAT 320D2'],
-  descripcion: '...',
+  descripcion: `Cadena de tren de rodaje compatible con excavadoras CAT 320, 320D y 320D2.
+Fabricada en acero de alta resistencia, tratada térmicamente para soportar condiciones de trabajo pesado en minería, construcción y obra civil.
+
+Disponible para entrega inmediata. Garantía CaterTrack incluida.`,
   foto: '',
-  disponibilidad: 'Disponible',
-  referencia: '...',
-  },
+  disponibilidad: '18',
+  referencia: 'Catertrack',
+}
 
 ];

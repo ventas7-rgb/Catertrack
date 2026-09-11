@@ -29,7 +29,7 @@ const items = productos.filter((producto) => producto.categoria === categoria);
 
         {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} />}
 
-        <MachineSearch />
+        <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
 
         <div class="product-grid">
           {items.map((producto) => (

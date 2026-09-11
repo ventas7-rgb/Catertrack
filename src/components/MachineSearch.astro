@@ -1,24 +1,46 @@
 ---
 // Cajita para filtrar, dentro de un listado ya renderizado, los productos
-// que aplican a una máquina/modelo específico (ej: "CAT 320", "PC200").
+// que aplican a una máquina o a un motor específico (ej: "CAT 320" o
+// "Cummins 6BT", según la categoría — ver `buscarPor` en catalogo.js).
 // El filtrado ocurre en el navegador — ver public/js/machine-filter.js.
 // Este componente solo pinta el input y el mensaje de "sin resultados".
+
+interface Props {
+  tipo?: 'maquina' | 'motor';
+}
+
+const { tipo = 'maquina' } = Astro.props;
+
+const textos = {
+  maquina: {
+    label: 'Buscar por máquina',
+    placeholder: 'Ej: CAT 320, Komatsu PC200...',
+    vacio: 'No encontramos productos para esa máquina. Verifica el modelo o contáctanos por WhatsApp.',
+  },
+  motor: {
+    label: 'Buscar por motor',
+    placeholder: 'Ej: Cummins 6BT, CAT 3306, Perkins...',
+    vacio: 'No encontramos productos para ese motor. Verifica el modelo o contáctanos por WhatsApp.',
+  },
+};
+
+const copy = textos[tipo] ?? textos.maquina;
 ---
 
 <div class="machine-search">
   <label for="machine-search-input" class="machine-search__label">
     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-    Buscar por máquina
+    {copy.label}
   </label>
   <input
     type="search"
     id="machine-search-input"
     class="machine-search__input"
-    placeholder="Ej: CAT 320, Komatsu PC200..."
+    placeholder={copy.placeholder}
     autocomplete="off"
     aria-describedby="machine-search-empty"
   />
   <p class="machine-search__empty" id="machine-search-empty" hidden>
-    No encontramos productos para esa máquina. Verifica el modelo o contáctanos por WhatsApp.
+    {copy.vacio}
   </p>
 </div>

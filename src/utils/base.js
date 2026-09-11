@@ -7,6 +7,7 @@ export const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
-export const landingBase = import.meta.env.DEV
-  ? 'http://127.0.0.1:5502/index.html'
-  : '/';
+// `public/index.html` (la landing page) vive dentro de este mismo proyecto
+// Astro, así que tanto en desarrollo (`astro dev`) como en producción se
+// sirve en la raíz del sitio. No apuntar nunca a un servidor externo aquí.
+export const landingBase = '/';
