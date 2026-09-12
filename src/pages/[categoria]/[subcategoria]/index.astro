@@ -43,6 +43,7 @@ const items = productos.filter(
             <article
               class="product-card"
               data-aplicaciones={normalizeText((producto.aplicaciones || []).join('|'))}
+              data-referencia={normalizeText(producto.referencia || '')}
             >
               <a
                 class="product-card__cover-link"
@@ -58,6 +59,7 @@ const items = productos.filter(
                 <h3>{producto.nombre}</h3>
                 <dl class="product-card__details">
                   <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+                  <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
                   <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
                 </dl>
                 <p class="product-card__description">{producto.descripcion}</p>
@@ -79,6 +81,6 @@ const items = productos.filter(
   </main>
 
   <Fragment slot="scripts">
-    <script src={`${base}js/machine-filter.js`}></script>
+    <script is:inline src={`${base}js/machine-filter.js`}></script>
   </Fragment>
 </CatalogLayout>

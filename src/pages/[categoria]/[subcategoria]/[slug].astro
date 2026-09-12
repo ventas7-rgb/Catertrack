@@ -57,7 +57,7 @@ const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug =
 
             <dl class="product-detail__specifications">
               <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
-              <div><dt>Referencia</dt><dd>{producto.referencia}</dd></div>
+              <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
               <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
               <div><dt>Disponibilidad</dt><dd>{producto.disponibilidad ?? 'Por confirmar'}</dd></div>
             </dl>

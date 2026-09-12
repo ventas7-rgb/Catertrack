@@ -1,9 +1,10 @@
 ---
 // Cajita para filtrar, dentro de un listado ya renderizado, los productos
 // que aplican a una máquina o a un motor específico (ej: "CAT 320" o
-// "Cummins 6BT", según la categoría — ver `buscarPor` en catalogo.js).
-// El filtrado ocurre en el navegador — ver public/js/machine-filter.js.
-// Este componente solo pinta el input y el mensaje de "sin resultados".
+// "Cummins 6BT", según la categoría — ver `buscarPor` en catalogo.js), o
+// que coinciden por código de referencia (ej: "9W9353"). El filtrado ocurre
+// en el navegador — ver public/js/machine-filter.js. Este componente solo
+// pinta el input y el mensaje de "sin resultados".
 
 interface Props {
   tipo?: 'maquina' | 'motor';
@@ -13,14 +14,14 @@ const { tipo = 'maquina' } = Astro.props;
 
 const textos = {
   maquina: {
-    label: 'Buscar por máquina',
-    placeholder: 'Ej: CAT 320, Komatsu PC200...',
-    vacio: 'No encontramos productos para esa máquina. Verifica el modelo o contáctanos por WhatsApp.',
+    label: 'Buscar por máquina o referencia',
+    placeholder: 'Ej: CAT 320, Komatsu PC200, 9W9353...',
+    vacio: 'No encontramos productos para esa máquina o referencia. Verifica el dato o contáctanos por WhatsApp.',
   },
   motor: {
-    label: 'Buscar por motor',
-    placeholder: 'Ej: Cummins 6BT, CAT 3306, Perkins...',
-    vacio: 'No encontramos productos para ese motor. Verifica el modelo o contáctanos por WhatsApp.',
+    label: 'Buscar por motor o referencia',
+    placeholder: 'Ej: Cummins 6BT, CAT 3306, Perkins, 9W9353...',
+    vacio: 'No encontramos productos para ese motor o referencia. Verifica el dato o contáctanos por WhatsApp.',
   },
 };
 
