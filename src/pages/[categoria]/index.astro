@@ -4,7 +4,6 @@ import SubcategoryFilters from '../../components/SubcategoryFilters.astro';
 import MachineSearch from '../../components/MachineSearch.astro';
 import { categorias, productos } from '../../data/catalogo';
 import { base } from '../../utils/base';
-import { normalizeText } from '../../utils/text';
 
 export function getStaticPaths() {
   return categorias.map((categoria) => ({ params: { categoria: categoria.slug } }));
@@ -13,6 +12,17 @@ export function getStaticPaths() {
 const { categoria } = Astro.params;
 const categoriaData = categorias.find((item) => item.slug === categoria);
 const items = productos.filter((producto) => producto.categoria === categoria);
+
+// Con catálogos grandes, meter TODAS las tarjetas de una categoría en el HTML
+// de una sola vez vuelve la página pesadísima (ver revisión de arquitectura:
+// una sola subcategoría con 367 productos ya pesaba 553 KB solo en tarjetas).
+// Por eso solo se renderizan de una las primeras PAGE_SIZE como HTML real
+// (rápidas de cargar, visibles sin JavaScript, buenas para SEO) y el resto se
+// entrega como datos (más abajo, `catalogItems`) para que
+// public/js/machine-filter.js las agregue bajo demanda con el botón "Cargar
+// más" — y para que el buscador por máquina/referencia siga encontrando
+// cualquier producto de la categoría, no solo los ya cargados en pantalla.
+const PAGE_SIZE = 24;
 ---
 
 <CatalogLayout title={`${categoriaData ? categoriaData.nombre : 'Categoría'} | CaterTrack`} activeCategoria={categoria}>
@@ -31,14 +41,9 @@ const items = productos.filter((producto) => producto.categoria === categoria);
 
         <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
 
-        <div class="product-grid">
-          {items.map((producto) => (
-            <article
-              class="product-card"
-              data-subcategory={producto.subcategoria}
-              data-aplicaciones={normalizeText((producto.aplicaciones || []).join('|'))}
-              data-referencia={normalizeText(producto.referencia || '')}
-            >
+        <div id="product-grid" class="product-grid" data-base={base} data-page-size={PAGE_SIZE}>
+          {items.slice(0, PAGE_SIZE).map((producto) => (
+            <article class="product-card" data-slug={producto.slug}>
               <a
                 class="product-card__cover-link"
                 href={`${base}${categoria}/${producto.subcategoria}/${producto.slug}`}
@@ -65,11 +70,38 @@ const items = productos.filter((producto) => producto.categoria === categoria);
             </article>
           ))}
         </div>
+        {items.length > PAGE_SIZE && (
+          <button type="button" id="load-more-btn" class="catalog-load-more">
+            Cargar más productos
+          </button>
+        )}
+        <noscript>
+          <p class="catalog-noscript">Activa JavaScript para ver el catálogo completo y buscar por máquina o referencia, o contáctanos por WhatsApp.</p>
+        </noscript>
       </div>
     </section>
   </main>
 
   <Fragment slot="scripts">
+    <script
+      is:inline
+      define:vars={{
+        catalogItems: items.map((p) => ({
+          slug: p.slug,
+          nombre: p.nombre,
+          marca: p.marca,
+          referencia: p.referencia || '',
+          aplicaciones: p.aplicaciones || [],
+          descripcion: p.descripcion,
+          foto: p.foto || '',
+          disponibilidad: p.disponibilidad ?? null,
+          categoria: p.categoria,
+          subcategoria: p.subcategoria,
+        })),
+      }}
+    >
+      window.__catalogItems = catalogItems;
+    </script>
     <script is:inline src={`${base}js/machine-filter.js`}></script>
   </Fragment>
 </CatalogLayout>
