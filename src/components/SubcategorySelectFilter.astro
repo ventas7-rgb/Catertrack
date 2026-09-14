@@ -1,0 +1,45 @@
+---
+// Selector desplegable para filtrar, dentro de un listado ya renderizado,
+// los productos por subcategoría (cadena, oruga, tejas...) — mismo patrón
+// que BrandFilter.astro (selector + combinación en el navegador), pero para
+// el campo `subcategoria` en vez de `marcasEquipo`. Se combina con AND junto
+// al buscador de MachineSearch.astro y el selector de marca de
+// BrandFilter.astro — ver public/js/machine-filter.js.
+//
+// A diferencia de BrandFilter (que solo aparece si hay 2+ marcas entre los
+// productos ya cargados), la lista de subcategorías sale directo de
+// `categoriaData.subcategorias` en catalogo.js — es fija para la categoría,
+// no depende de qué productos existan todavía, así que se muestra en
+// cualquier categoría con más de una subcategoría (todas, hoy).
+//
+// Solo se usa en la página de CATEGORÍA (src/pages/[categoria]/index.astro),
+// donde conviven productos de varias subcategorías a la vez. No se agrega a
+// la página de una subcategoría puntual: ahí `window.__catalogItems` solo
+// trae los productos de esa subcategoría, así que no habría con qué llenar
+// las demás opciones. Para moverse entre páginas de subcategoría se sigue
+// usando SubcategoryFilters.astro (los links/pills que ya existían, con su
+// propia URL por subcategoría — importantes para SEO); este selector no los
+// reemplaza, es un filtro adicional para no perder los demás filtros ni
+// recargar la página.
+
+interface Props {
+  subcategorias: { slug: string; nombre: string }[];
+}
+
+const { subcategorias } = Astro.props;
+---
+
+{subcategorias.length > 1 && (
+  <div class="subcategory-select-filter">
+    <label for="subcategory-filter-select" class="subcategory-select-filter__label">
+      <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+      Filtrar por subcategoría
+    </label>
+    <select id="subcategory-filter-select" class="subcategory-select-filter__select">
+      <option value="">Todas las subcategorías</option>
+      {subcategorias.map((subcategoria) => (
+        <option value={subcategoria.slug}>{subcategoria.nombre}</option>
+      ))}
+    </select>
+  </div>
+)}

@@ -31,6 +31,7 @@
   const emptyMessage = document.getElementById('machine-search-empty');
   const loadMoreBtn = document.getElementById('load-more-btn');
   const brandSelect = document.getElementById('brand-filter-select');
+  const subcategorySelect = document.getElementById('subcategory-filter-select');
 
   const normalize = (text) =>
     (text ?? '')
@@ -126,28 +127,31 @@
     updateLoadMoreVisibility();
   }
 
-  // El buscador libre (texto) y el selector de marca son dos filtros
-  // independientes que se combinan con AND: si ambos están activos, solo se
-  // muestran los productos que cumplen los dos a la vez.
+  // El buscador libre (texto), el selector de marca y el selector de
+  // subcategoría son filtros independientes que se combinan con AND: si hay
+  // varios activos a la vez, solo se muestran los productos que cumplen
+  // todos, no basta con cumplir uno solo.
   function applyFilters() {
     const rawTerm = input ? input.value : '';
     const term = normalize(rawTerm.trim());
     const brand = brandSelect ? brandSelect.value : '';
+    const subcategoria = subcategorySelect ? subcategorySelect.value : '';
 
-    if (term === '' && brand === '') {
+    if (term === '' && brand === '' && subcategoria === '') {
       resetToBrowseView();
       return;
     }
 
     searchActive = true;
     const termClean = onlyAlphanumeric(term);
-    const matches = entries.filter(({ aplicacionesNorm, referenciaClean, marcasEquipo }) => {
+    const matches = entries.filter(({ aplicacionesNorm, referenciaClean, marcasEquipo, item }) => {
       const matchesTerm =
         term === '' ||
         aplicacionesNorm.includes(term) ||
         (termClean !== '' && referenciaClean.includes(termClean));
       const matchesBrand = brand === '' || marcasEquipo.includes(brand);
-      return matchesTerm && matchesBrand;
+      const matchesSubcategoria = subcategoria === '' || item.subcategoria === subcategoria;
+      return matchesTerm && matchesBrand && matchesSubcategoria;
     });
 
     // Se ocultan las tarjetas estáticas y se dibujan de nuevo todas las que
@@ -168,4 +172,5 @@
   if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMore);
   if (input) input.addEventListener('input', applyFilters);
   if (brandSelect) brandSelect.addEventListener('change', applyFilters);
+  if (subcategorySelect) subcategorySelect.addEventListener('change', applyFilters);
 })();

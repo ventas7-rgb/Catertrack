@@ -13,9 +13,10 @@ interface Props {
 const { tipo = 'maquina' } = Astro.props;
 
 // El mensaje de "vacío" también se usa cuando el filtro de marca (ver
-// BrandFilter.astro) no encuentra resultados, no solo la búsqueda de texto —
-// por eso queda redactado en términos genéricos ("esos filtros") en vez de
-// mencionar solo máquina/referencia.
+// BrandFilter.astro) o el de subcategoría (ver SubcategorySelectFilter.astro)
+// no encuentran resultados, no solo la búsqueda de texto — por eso queda
+// redactado en términos genéricos ("esos filtros") en vez de mencionar solo
+// máquina/referencia.
 const textos = {
   maquina: {
     label: 'Buscar por máquina o referencia',

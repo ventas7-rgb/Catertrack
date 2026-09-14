@@ -3,6 +3,7 @@ import CatalogLayout from '../../layouts/CatalogLayout.astro';
 import SubcategoryFilters from '../../components/SubcategoryFilters.astro';
 import MachineSearch from '../../components/MachineSearch.astro';
 import BrandFilter from '../../components/BrandFilter.astro';
+import SubcategorySelectFilter from '../../components/SubcategorySelectFilter.astro';
 import { categorias, productos } from '../../data/catalogo';
 import { base } from '../../utils/base';
 import { toMetaDescription } from '../../utils/seo';
@@ -58,6 +59,7 @@ const categoryDescription = categoriaData
 
         <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
         <BrandFilter marcas={marcasDisponibles} />
+        {categoriaData && <SubcategorySelectFilter subcategorias={categoriaData.subcategorias} />}
 
         <div id="product-grid" class="product-grid" data-base={base} data-page-size={PAGE_SIZE}>
           {items.slice(0, PAGE_SIZE).map((producto) => (
