@@ -6,11 +6,11 @@
 // al buscador de MachineSearch.astro y el selector de marca de
 // BrandFilter.astro — ver public/js/machine-filter.js.
 //
-// A diferencia de BrandFilter (que solo aparece si hay 2+ marcas entre los
-// productos ya cargados), la lista de subcategorías sale directo de
-// `categoriaData.subcategorias` en catalogo.js — es fija para la categoría,
-// no depende de qué productos existan todavía, así que se muestra en
-// cualquier categoría con más de una subcategoría (todas, hoy).
+// Al igual que BrandFilter, se muestra siempre en todas las categorías — la
+// lista de subcategorías sale directo de `categoriaData.subcategorias` en
+// catalogo.js (es fija para la categoría, no depende de qué productos
+// existan todavía) y no queda condicionada a que haya 2+ opciones, para que
+// la barra de filtros sea idéntica en todas las categorías.
 //
 // Solo se usa en la página de CATEGORÍA (src/pages/[categoria]/index.astro),
 // donde conviven productos de varias subcategorías a la vez. No se agrega a
@@ -29,17 +29,15 @@ interface Props {
 const { subcategorias } = Astro.props;
 ---
 
-{subcategorias.length > 1 && (
-  <div class="subcategory-select-filter">
-    <label for="subcategory-filter-select" class="subcategory-select-filter__label">
-      <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-      Filtrar por subcategoría
-    </label>
-    <select id="subcategory-filter-select" class="subcategory-select-filter__select">
-      <option value="">Todas las subcategorías</option>
-      {subcategorias.map((subcategoria) => (
-        <option value={subcategoria.slug}>{subcategoria.nombre}</option>
-      ))}
-    </select>
-  </div>
-)}
+<div class="subcategory-select-filter">
+  <label for="subcategory-filter-select" class="subcategory-select-filter__label">
+    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+    Filtrar por subcategoría
+  </label>
+  <select id="subcategory-filter-select" class="subcategory-select-filter__select">
+    <option value="">Todas las subcategorías</option>
+    {subcategorias.map((subcategoria) => (
+      <option value={subcategoria.slug}>{subcategoria.nombre}</option>
+    ))}
+  </select>
+</div>
