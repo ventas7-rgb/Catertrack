@@ -168,9 +168,23 @@
     if (emptyMessage) emptyMessage.hidden = matches.length !== 0;
   }
 
+  // En la página de subcategoría el selector de subcategoría no filtra la
+  // lista ya cargada (solo trae productos de ESA subcategoría, no habría con
+  // qué llenar las demás opciones) — en vez de eso navega a la URL real de la
+  // subcategoría elegida. Ver el comentario de SubcategorySelectFilter.astro.
+  function goToSubcategory() {
+    const categoriaSlug = subcategorySelect.dataset.categoria;
+    if (!categoriaSlug) return;
+    const nextSlug = subcategorySelect.value;
+    window.location.href = nextSlug ? `${base}${categoriaSlug}/${nextSlug}/` : `${base}${categoriaSlug}/`;
+  }
+
   updateLoadMoreVisibility();
   if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMore);
   if (input) input.addEventListener('input', applyFilters);
   if (brandSelect) brandSelect.addEventListener('change', applyFilters);
-  if (subcategorySelect) subcategorySelect.addEventListener('change', applyFilters);
+  if (subcategorySelect) {
+    const isNavigate = subcategorySelect.dataset.mode === 'navigate';
+    subcategorySelect.addEventListener('change', isNavigate ? goToSubcategory : applyFilters);
+  }
 })();

@@ -1,8 +1,8 @@
 ---
 import CatalogLayout from '../../../layouts/CatalogLayout.astro';
-import SubcategoryFilters from '../../../components/SubcategoryFilters.astro';
 import MachineSearch from '../../../components/MachineSearch.astro';
 import BrandFilter from '../../../components/BrandFilter.astro';
+import SubcategorySelectFilter from '../../../components/SubcategorySelectFilter.astro';
 import { categorias, productos } from '../../../data/catalogo';
 import { base } from '../../../utils/base';
 import { toMetaDescription } from '../../../utils/seo';
@@ -61,10 +61,19 @@ const subcategoryDescription = subcategoriaData
           <span class="catalog-result">{items.length} resultados</span>
         </div>
 
-        {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} activeSlug={subcategoria} />}
-
-        <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
-        <BrandFilter marcas={marcasDisponibles} />
+        <div class="catalog-filters">
+          <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
+          <div class="catalog-filters-row">
+            {categoriaData && (
+              <SubcategorySelectFilter
+                subcategorias={categoriaData.subcategorias}
+                categoriaSlug={categoria}
+                activeSlug={subcategoria}
+              />
+            )}
+            <BrandFilter marcas={marcasDisponibles} />
+          </div>
+        </div>
 
         <div id="product-grid" class="product-grid" data-base={base} data-page-size={PAGE_SIZE}>
           {items.slice(0, PAGE_SIZE).map((producto) => (

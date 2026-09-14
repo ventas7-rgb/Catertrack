@@ -1,32 +1,35 @@
 ---
-// Selector desplegable para filtrar, dentro de un listado ya renderizado,
-// los productos por subcategoría (cadena, oruga, tejas...) — mismo patrón
-// que BrandFilter.astro (selector + combinación en el navegador), pero para
-// el campo `subcategoria` en vez de `marcasEquipo`. Se combina con AND junto
-// al buscador de MachineSearch.astro y el selector de marca de
-// BrandFilter.astro — ver public/js/machine-filter.js.
+// Selector desplegable de subcategoría — mismo patrón visual que
+// BrandFilter.astro, pero se usa en dos modos distintos según la página:
 //
-// Al igual que BrandFilter, se muestra siempre en todas las categorías — la
-// lista de subcategorías sale directo de `categoriaData.subcategorias` en
-// catalogo.js (es fija para la categoría, no depende de qué productos
-// existan todavía) y no queda condicionada a que haya 2+ opciones, para que
-// la barra de filtros sea idéntica en todas las categorías.
+// 1) Modo "filter" (página de CATEGORÍA, src/pages/[categoria]/index.astro):
+//    ahí conviven productos de varias subcategorías a la vez, así que el
+//    selector filtra en el navegador — se combina con AND junto al buscador
+//    de MachineSearch.astro y el selector de marca de BrandFilter.astro (ver
+//    public/js/machine-filter.js). Se activa no pasando `categoriaSlug`.
 //
-// Solo se usa en la página de CATEGORÍA (src/pages/[categoria]/index.astro),
-// donde conviven productos de varias subcategorías a la vez. No se agrega a
-// la página de una subcategoría puntual: ahí `window.__catalogItems` solo
-// trae los productos de esa subcategoría, así que no habría con qué llenar
-// las demás opciones. Para moverse entre páginas de subcategoría se sigue
-// usando SubcategoryFilters.astro (los links/pills que ya existían, con su
-// propia URL por subcategoría — importantes para SEO); este selector no los
-// reemplaza, es un filtro adicional para no perder los demás filtros ni
-// recargar la página.
+// 2) Modo "navigate" (página de SUBCATEGORÍA,
+//    src/pages/[categoria]/[subcategoria]/index.astro): ahí
+//    `window.__catalogItems` solo trae los productos de ESA subcategoría, así
+//    que filtrar en el navegador no serviría para nada si se elige otra — en
+//    vez de eso, al cambiar de opción el selector navega de una a la URL real
+//    de la subcategoría elegida (o a la página de categoría si se elige
+//    "Todas"). Se activa pasando `categoriaSlug` (y opcionalmente
+//    `activeSlug` para dejar preseleccionada la subcategoría actual). Ese
+//    cambio de página, además, conserva el valor SEO que tenían los antiguos
+//    links/pills de SubcategoryFilters.astro (ya no se usan): cada opción
+//    sigue siendo una URL real por subcategoría.
+//
+// Se muestra siempre, en todas las categorías, aunque todavía no tengan más
+// de una subcategoría — así la barra de filtros es idéntica en todas partes.
 
 interface Props {
   subcategorias: { slug: string; nombre: string }[];
+  categoriaSlug?: string;
+  activeSlug?: string;
 }
 
-const { subcategorias } = Astro.props;
+const { subcategorias, categoriaSlug, activeSlug } = Astro.props;
 ---
 
 <div class="subcategory-select-filter">
@@ -34,10 +37,15 @@ const { subcategorias } = Astro.props;
     <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
     Filtrar por subcategoría
   </label>
-  <select id="subcategory-filter-select" class="subcategory-select-filter__select">
-    <option value="">Todas las subcategorías</option>
+  <select
+    id="subcategory-filter-select"
+    class="subcategory-select-filter__select"
+    data-mode={categoriaSlug ? 'navigate' : 'filter'}
+    data-categoria={categoriaSlug}
+  >
+    <option value="" selected={!activeSlug}>Todas las subcategorías</option>
     {subcategorias.map((subcategoria) => (
-      <option value={subcategoria.slug}>{subcategoria.nombre}</option>
+      <option value={subcategoria.slug} selected={subcategoria.slug === activeSlug}>{subcategoria.nombre}</option>
     ))}
   </select>
 </div>
