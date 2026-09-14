@@ -1,0 +1,33 @@
+---
+// Selector desplegable para filtrar, dentro de un listado ya renderizado,
+// los productos por marca de equipo (CAT, Komatsu, Case, Shantui...) — ver
+// el campo `marcasEquipo` en src/data/catalogo.js. Es un filtro adicional al
+// buscador libre de MachineSearch.astro: ambos se combinan en el navegador
+// (ver public/js/machine-filter.js), no son excluyentes.
+//
+// Solo se muestra si la página tiene al menos dos marcas distintas entre sus
+// productos — con una sola marca (o ninguna todavía, como en las
+// subcategorías aún vacías) el selector no aporta nada y solo ensucia la UI.
+
+interface Props {
+  marcas: string[];
+}
+
+const { marcas } = Astro.props;
+const marcasOrdenadas = [...new Set(marcas)].sort((a, b) => a.localeCompare(b, 'es'));
+---
+
+{marcasOrdenadas.length > 1 && (
+  <div class="brand-filter">
+    <label for="brand-filter-select" class="brand-filter__label">
+      <i class="fa-solid fa-industry" aria-hidden="true"></i>
+      Filtrar por marca
+    </label>
+    <select id="brand-filter-select" class="brand-filter__select">
+      <option value="">Todas las marcas</option>
+      {marcasOrdenadas.map((marca) => (
+        <option value={marca}>{marca}</option>
+      ))}
+    </select>
+  </div>
+)}

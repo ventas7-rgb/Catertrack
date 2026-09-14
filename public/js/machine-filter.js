@@ -30,6 +30,7 @@
   const input = document.getElementById('machine-search-input');
   const emptyMessage = document.getElementById('machine-search-empty');
   const loadMoreBtn = document.getElementById('load-more-btn');
+  const brandSelect = document.getElementById('brand-filter-select');
 
   const normalize = (text) =>
     (text ?? '')
@@ -51,6 +52,7 @@
     item,
     aplicacionesNorm: normalize((item.aplicaciones || []).join('|')),
     referenciaClean: onlyAlphanumeric(normalize(item.referencia || '')),
+    marcasEquipo: item.marcasEquipo || [],
   }));
 
   let loadedCount = Math.min(staticCount || pageSize, entries.length);
@@ -62,6 +64,9 @@
     const disponibilidad = item.disponibilidad || 'Por confirmar';
     const referencia = item.referencia || 'Por confirmar';
     const aplicacion = (item.aplicaciones || []).join(', ') || 'Por confirmar';
+    const marcaEquipoRow = (item.marcasEquipo || []).length > 0
+      ? `<div><dt>Marca de equipo</dt><dd>${escapeHtml(item.marcasEquipo.join(', '))}</dd></div>`
+      : '';
     const waText = encodeURIComponent(`Hola CaterTrack, quiero cotizar ${item.nombre}`);
 
     return `<article class="product-card js-card" data-slug="${escapeHtml(item.slug)}">
@@ -75,6 +80,7 @@
         <h3>${escapeHtml(item.nombre)}</h3>
         <dl class="product-card__details">
           <div><dt>Marca</dt><dd>${escapeHtml(item.marca)}</dd></div>
+          ${marcaEquipoRow}
           <div><dt>Referencia</dt><dd>${escapeHtml(referencia)}</dd></div>
           <div><dt>Aplicación</dt><dd>${escapeHtml(aplicacion)}</dd></div>
         </dl>
@@ -120,23 +126,32 @@
     updateLoadMoreVisibility();
   }
 
-  function runSearch(rawTerm) {
+  // El buscador libre (texto) y el selector de marca son dos filtros
+  // independientes que se combinan con AND: si ambos están activos, solo se
+  // muestran los productos que cumplen los dos a la vez.
+  function applyFilters() {
+    const rawTerm = input ? input.value : '';
     const term = normalize(rawTerm.trim());
+    const brand = brandSelect ? brandSelect.value : '';
 
-    if (term === '') {
+    if (term === '' && brand === '') {
       resetToBrowseView();
       return;
     }
 
     searchActive = true;
     const termClean = onlyAlphanumeric(term);
-    const matches = entries.filter(
-      ({ aplicacionesNorm, referenciaClean }) =>
-        aplicacionesNorm.includes(term) || (termClean !== '' && referenciaClean.includes(termClean))
-    );
+    const matches = entries.filter(({ aplicacionesNorm, referenciaClean, marcasEquipo }) => {
+      const matchesTerm =
+        term === '' ||
+        aplicacionesNorm.includes(term) ||
+        (termClean !== '' && referenciaClean.includes(termClean));
+      const matchesBrand = brand === '' || marcasEquipo.includes(brand);
+      return matchesTerm && matchesBrand;
+    });
 
     // Se ocultan las tarjetas estáticas y se dibujan de nuevo todas las que
-    // coinciden (estén ya cargadas o no) — así la búsqueda siempre cubre el
+    // coinciden (estén ya cargadas o no) — así el filtro siempre cubre el
     // catálogo completo de la página, no solo lo que se había cargado hasta
     // ese momento con "Cargar más".
     clearDynamicCards();
@@ -151,5 +166,6 @@
 
   updateLoadMoreVisibility();
   if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMore);
-  if (input) input.addEventListener('input', () => runSearch(input.value));
+  if (input) input.addEventListener('input', applyFilters);
+  if (brandSelect) brandSelect.addEventListener('change', applyFilters);
 })();

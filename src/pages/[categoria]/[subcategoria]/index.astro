@@ -2,8 +2,10 @@
 import CatalogLayout from '../../../layouts/CatalogLayout.astro';
 import SubcategoryFilters from '../../../components/SubcategoryFilters.astro';
 import MachineSearch from '../../../components/MachineSearch.astro';
+import BrandFilter from '../../../components/BrandFilter.astro';
 import { categorias, productos } from '../../../data/catalogo';
 import { base } from '../../../utils/base';
+import { toMetaDescription } from '../../../utils/seo';
 
 export function getStaticPaths() {
   return categorias.flatMap((categoria) =>
@@ -23,14 +25,34 @@ const items = productos.filter(
   (producto) => producto.categoria === categoria && producto.subcategoria === subcategoria
 );
 
+// Marcas de equipo (CAT, Komatsu...) presentes en esta subcategoría, para el
+// selector de BrandFilter — ver el comentario de ese componente sobre por
+// qué solo aparece cuando hay más de una.
+const marcasDisponibles = items.flatMap((producto) => producto.marcasEquipo || []);
+
 // Ver el comentario equivalente en src/pages/[categoria]/index.astro: solo se
 // renderizan de una las primeras PAGE_SIZE tarjetas como HTML real; el resto
 // se entrega como datos para que machine-filter.js las cargue bajo demanda y
 // para que el buscador siga alcanzando toda la subcategoría.
 const PAGE_SIZE = 24;
+
+// Igual que en la página de categoría: antes esta página no tenía meta
+// description en absoluto.
+//
+// (Se intentó primero sacar automáticamente las marcas de máquina desde
+// "aplicaciones" para mencionarlas aquí — ej. "CAT, Komatsu" — pero los datos
+// reales tienen de todo: marcas de dos palabras como "New Holland", y algún
+// dato suelto como "Excavadoras" que no es una marca. Con texto que sale en
+// resultados de Google, es mejor un resumen genérico pero siempre correcto
+// que uno más "inteligente" que a veces diga algo raro.)
+const subcategoryDescription = subcategoriaData
+  ? toMetaDescription(
+      `${subcategoriaData.nombre} para maquinaria pesada: ${items.length} referencias disponibles, compatibles con múltiples marcas y modelos. Cotiza por WhatsApp con CaterTrack.`
+    )
+  : undefined;
 ---
 
-<CatalogLayout title={`${subcategoriaData?.nombre ?? subcategoria} | CaterTrack`} activeCategoria={categoria}>
+<CatalogLayout title={`${subcategoriaData?.nombre ?? subcategoria} | CaterTrack`} description={subcategoryDescription} activeCategoria={categoria}>
   <main id="main-content" aria-label="Contenido principal">
     <section class="catalog-products">
       <div class="container">
@@ -42,6 +64,7 @@ const PAGE_SIZE = 24;
         {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} activeSlug={subcategoria} />}
 
         <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
+        <BrandFilter marcas={marcasDisponibles} />
 
         <div id="product-grid" class="product-grid" data-base={base} data-page-size={PAGE_SIZE}>
           {items.slice(0, PAGE_SIZE).map((producto) => (
@@ -60,6 +83,9 @@ const PAGE_SIZE = 24;
                 <h3>{producto.nombre}</h3>
                 <dl class="product-card__details">
                   <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+                  {(producto.marcasEquipo || []).length > 0 && (
+                    <div><dt>Marca de equipo</dt><dd>{producto.marcasEquipo.join(', ')}</dd></div>
+                  )}
                   <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
                   <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
                 </dl>
@@ -97,6 +123,7 @@ const PAGE_SIZE = 24;
           slug: p.slug,
           nombre: p.nombre,
           marca: p.marca,
+          marcasEquipo: p.marcasEquipo || [],
           referencia: p.referencia || '',
           aplicaciones: p.aplicaciones || [],
           descripcion: p.descripcion,

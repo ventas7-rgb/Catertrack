@@ -2,6 +2,7 @@
 import CatalogLayout from '../../../layouts/CatalogLayout.astro';
 import { categorias, productos } from '../../../data/catalogo';
 import { base, landingBase } from '../../../utils/base';
+import { toMetaDescription } from '../../../utils/seo';
 
 export function getStaticPaths() {
   return productos.map((producto) => ({
@@ -29,7 +30,7 @@ const categoriaData = categorias.find((item) => item.slug === categoria);
 const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug === subcategoria);
 ---
 
-<CatalogLayout title={`${producto.nombre} | CaterTrack`} description={producto.descripcion} activeCategoria={categoria}>
+<CatalogLayout title={`${producto.nombre} | CaterTrack`} description={toMetaDescription(producto.descripcion)} activeCategoria={categoria}>
   <main id="main-content" class="product-detail" aria-label="Detalle del producto">
     <section class="product-detail__intro">
       <div class="container">
@@ -57,6 +58,9 @@ const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug =
 
             <dl class="product-detail__specifications">
               <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+              {(producto.marcasEquipo || []).length > 0 && (
+                <div><dt>Marca de equipo</dt><dd>{producto.marcasEquipo.join(', ')}</dd></div>
+              )}
               <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
               <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
               <div><dt>Disponibilidad</dt><dd>{producto.disponibilidad ?? 'Por confirmar'}</dd></div>

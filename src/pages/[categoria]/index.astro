@@ -2,8 +2,10 @@
 import CatalogLayout from '../../layouts/CatalogLayout.astro';
 import SubcategoryFilters from '../../components/SubcategoryFilters.astro';
 import MachineSearch from '../../components/MachineSearch.astro';
+import BrandFilter from '../../components/BrandFilter.astro';
 import { categorias, productos } from '../../data/catalogo';
 import { base } from '../../utils/base';
+import { toMetaDescription } from '../../utils/seo';
 
 export function getStaticPaths() {
   return categorias.map((categoria) => ({ params: { categoria: categoria.slug } }));
@@ -12,6 +14,11 @@ export function getStaticPaths() {
 const { categoria } = Astro.params;
 const categoriaData = categorias.find((item) => item.slug === categoria);
 const items = productos.filter((producto) => producto.categoria === categoria);
+
+// Marcas de equipo (CAT, Komatsu...) presentes en esta categoría, para el
+// selector de BrandFilter — ver el comentario de ese componente sobre por
+// qué solo aparece cuando hay más de una.
+const marcasDisponibles = items.flatMap((producto) => producto.marcasEquipo || []);
 
 // Con catálogos grandes, meter TODAS las tarjetas de una categoría en el HTML
 // de una sola vez vuelve la página pesadísima (ver revisión de arquitectura:
@@ -23,9 +30,19 @@ const items = productos.filter((producto) => producto.categoria === categoria);
 // más" — y para que el buscador por máquina/referencia siga encontrando
 // cualquier producto de la categoría, no solo los ya cargados en pantalla.
 const PAGE_SIZE = 24;
+
+// Antes esta página no tenía meta description (el prop simplemente no se
+// pasaba), así que Google se inventaba el resumen a partir de lo primero que
+// encontrara en el HTML. Con una categoría completa a punto de crecer mucho
+// (más marcas, más referencias), vale la pena darle un resumen propio.
+const categoryDescription = categoriaData
+  ? toMetaDescription(
+      `Repuestos de ${categoriaData.nombre} para maquinaria pesada: ${items.length} referencias disponibles. Cotiza por WhatsApp con CaterTrack.`
+    )
+  : undefined;
 ---
 
-<CatalogLayout title={`${categoriaData ? categoriaData.nombre : 'Categoría'} | CaterTrack`} activeCategoria={categoria}>
+<CatalogLayout title={`${categoriaData ? categoriaData.nombre : 'Categoría'} | CaterTrack`} description={categoryDescription} activeCategoria={categoria}>
   <main id="main-content" aria-label={`Catálogo de ${categoriaData?.nombre ?? 'categoría'}`}>
     <section class="catalog-products">
       <div class="container">
@@ -40,6 +57,7 @@ const PAGE_SIZE = 24;
         {categoriaData && <SubcategoryFilters categoriaSlug={categoria} subcategorias={categoriaData.subcategorias} />}
 
         <MachineSearch tipo={categoriaData?.buscarPor ?? 'maquina'} />
+        <BrandFilter marcas={marcasDisponibles} />
 
         <div id="product-grid" class="product-grid" data-base={base} data-page-size={PAGE_SIZE}>
           {items.slice(0, PAGE_SIZE).map((producto) => (
@@ -58,6 +76,9 @@ const PAGE_SIZE = 24;
                 <h3>{producto.nombre}</h3>
                 <dl class="product-card__details">
                   <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+                  {(producto.marcasEquipo || []).length > 0 && (
+                    <div><dt>Marca de equipo</dt><dd>{producto.marcasEquipo.join(', ')}</dd></div>
+                  )}
                   <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
                   <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>
                 </dl>
@@ -90,6 +111,7 @@ const PAGE_SIZE = 24;
           slug: p.slug,
           nombre: p.nombre,
           marca: p.marca,
+          marcasEquipo: p.marcasEquipo || [],
           referencia: p.referencia || '',
           aplicaciones: p.aplicaciones || [],
           descripcion: p.descripcion,

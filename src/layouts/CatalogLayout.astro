@@ -13,6 +13,14 @@ interface Props {
 }
 
 const { title, description, activeCategoria } = Astro.props;
+
+// URL canónica de la página actual (ej. https://catertracksas.co/tren-de-rodaje/cadena/producto-x/).
+// Sin esto, cada página le decía a Google "indéxame" pero nunca "esta es la
+// versión oficial de esta URL" — con miles de páginas de producto entrando,
+// vale la pena dejarlo explícito desde ya para evitar cualquier duda de
+// contenido duplicado (por ejemplo si en el futuro se agregan parámetros de
+// URL para filtros o tracking).
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="es">
@@ -21,6 +29,7 @@ const { title, description, activeCategoria } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

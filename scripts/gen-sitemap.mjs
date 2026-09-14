@@ -1,8 +1,13 @@
 import { writeFileSync } from 'node:fs';
 import { categorias, productos } from '../src/data/catalogo.js';
+import astroConfig from '../astro.config.mjs';
 
-const SITE = 'https://catertracksas.co';
-const BASE = '/';
+// Antes SITE/BASE estaban repetidos aquí a mano, duplicando lo que ya dice
+// astro.config.mjs. Si alguna vez cambia el dominio o el base ahí y no se
+// actualizaba también aquí, el sitemap habría quedado apuntando a URLs
+// equivocadas sin ningún error visible. Ahora se toman del mismo config.
+const SITE = astroConfig.site;
+const BASE = astroConfig.base ?? '/';
 
 const urls = [`${SITE}/`];
 
