@@ -3,7 +3,7 @@ import CatalogLayout from '../../../layouts/CatalogLayout.astro';
 import MachineSearch from '../../../components/MachineSearch.astro';
 import BrandFilter from '../../../components/BrandFilter.astro';
 import SubcategorySelectFilter from '../../../components/SubcategorySelectFilter.astro';
-import { categorias, productos } from '../../../data/catalogo';
+import { categorias, productosPorCategoria } from '../../../data/catalogo';
 import { base } from '../../../utils/base';
 import { toMetaDescription } from '../../../utils/seo';
 
@@ -21,8 +21,12 @@ export function getStaticPaths() {
 const { categoria, subcategoria } = Astro.params;
 const categoriaData = categorias.find((item) => item.slug === categoria);
 const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug === subcategoria);
-const items = productos.filter(
-  (producto) => producto.categoria === categoria && producto.subcategoria === subcategoria
+// Antes: productos.filter(...) sobre el catálogo completo. Ahora se parte
+// del array de la propia categoría (productosPorCategoria, ver el comentario
+// equivalente en src/pages/[categoria]/index.astro) y solo se filtra dentro
+// de esa categoría por subcategoría.
+const items = (productosPorCategoria[categoria] || []).filter(
+  (producto) => producto.subcategoria === subcategoria
 );
 
 // Marcas de equipo (CAT, Komatsu...) presentes en esta subcategoría, para el

@@ -30,10 +30,32 @@ const categoriaData = categorias.find((item) => item.slug === categoria);
 const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug === subcategoria);
 ---
 
+<!--
+  data-pagefind-body en el <main> de abajo: en cuanto Pagefind (el índice de
+  búsqueda que arma `pagefind --site dist` después de cada build, ver
+  package.json) encuentra ESE atributo en cualquier página del sitio, deja de
+  indexar todo por defecto y SOLO indexa las zonas marcadas con
+  data-pagefind-body en TODO el sitio. Se puso únicamente aquí, en la página
+  de producto, para que el buscador de /buscar (src/pages/buscar.astro)
+  indexe cada una de las ~25.000 páginas de producto (nombre, descripción,
+  referencia, aplicaciones) sin meter también las páginas de
+  categoría/subcategoría, que son solo listados de tarjetas y no aportarían
+  nada nuevo al buscar.
+-->
 <CatalogLayout title={`${producto.nombre} | CaterTrack`} description={toMetaDescription(producto.descripcion)} activeCategoria={categoria}>
-  <main id="main-content" class="product-detail" aria-label="Detalle del producto">
+  <main id="main-content" class="product-detail" data-pagefind-body aria-label="Detalle del producto">
     <section class="product-detail__intro">
       <div class="container">
+        <!--
+          Estos dos spans no se ven (visually-hidden es una utilidad de
+          Bootstrap, ya cargado en CatalogLayout) — solo le dicen a Pagefind
+          (el buscador de /buscar) con qué categoría y subcategoría filtrar
+          esta página. Ver el comentario de arriba (data-pagefind-body) y
+          src/pages/buscar.astro.
+        -->
+        <span class="visually-hidden" data-pagefind-filter={`categoria:${categoriaData?.nombre ?? categoria}`}></span>
+        <span class="visually-hidden" data-pagefind-filter={`subcategoria:${subcategoriaData?.nombre ?? subcategoria}`}></span>
+
         <div class="product-detail__breadcrumb">
           <a href={`${landingBase}#inicio`}>Inicio</a>
           <span>/</span>
@@ -46,7 +68,12 @@ const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug =
 
         <div class="product-detail__layout">
           <div class="product-detail__image">
-            <img src={producto.foto || `${base}assets/images/products/placeholder.webp`} alt={producto.nombre} loading="lazy" />
+            <img
+              src={producto.foto || `${base}assets/images/products/placeholder.webp`}
+              alt={producto.nombre}
+              loading="lazy"
+              data-pagefind-meta="image[src]"
+            />
           </div>
           <div class="product-detail__content">
             <a class="product-detail__back" href={`${base}${categoria}/${subcategoria}`}>
@@ -57,9 +84,17 @@ const subcategoriaData = categoriaData?.subcategorias.find((item) => item.slug =
             <p class="product-detail__description">{producto.descripcion}</p>
 
             <dl class="product-detail__specifications">
-              <div><dt>Marca</dt><dd>{producto.marca}</dd></div>
+              <div><dt>Marca</dt><dd data-pagefind-filter={`marca:${producto.marca}`}>{producto.marca}</dd></div>
               {(producto.marcasEquipo || []).length > 0 && (
-                <div><dt>Marca de equipo</dt><dd>{producto.marcasEquipo.join(', ')}</dd></div>
+                <div>
+                  <dt>Marca de equipo</dt>
+                  <dd>
+                    {producto.marcasEquipo.join(', ')}
+                    {producto.marcasEquipo.map((marcaEquipo) => (
+                      <span class="visually-hidden" data-pagefind-filter={`marca-equipo:${marcaEquipo}`}>{marcaEquipo}</span>
+                    ))}
+                  </dd>
+                </div>
               )}
               <div><dt>Referencia</dt><dd>{producto.referencia || 'Por confirmar'}</dd></div>
               <div><dt>Aplicación</dt><dd>{(producto.aplicaciones || []).join(', ') || 'Por confirmar'}</dd></div>

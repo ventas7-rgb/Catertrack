@@ -3,7 +3,7 @@ import CatalogLayout from '../../layouts/CatalogLayout.astro';
 import MachineSearch from '../../components/MachineSearch.astro';
 import BrandFilter from '../../components/BrandFilter.astro';
 import SubcategorySelectFilter from '../../components/SubcategorySelectFilter.astro';
-import { categorias, productos } from '../../data/catalogo';
+import { categorias, productosPorCategoria } from '../../data/catalogo';
 import { base } from '../../utils/base';
 import { toMetaDescription } from '../../utils/seo';
 
@@ -13,7 +13,12 @@ export function getStaticPaths() {
 
 const { categoria } = Astro.params;
 const categoriaData = categorias.find((item) => item.slug === categoria);
-const items = productos.filter((producto) => producto.categoria === categoria);
+// Antes: productos.filter(p => p.categoria === categoria), recorriendo el
+// catálogo COMPLETO en cada una de las 11 páginas de categoría. Con
+// productosPorCategoria (src/data/productos/index.js) cada página lee
+// directo el array de su propia categoría — importante cuando el catálogo
+// crezca a miles de referencias repartidas en 11 archivos.
+const items = productosPorCategoria[categoria] || [];
 
 // Marcas de equipo (CAT, Komatsu...) presentes en esta categoría, para el
 // selector de BrandFilter — ver el comentario de ese componente sobre por

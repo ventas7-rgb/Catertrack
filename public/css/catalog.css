@@ -421,3 +421,46 @@ a { color: inherit; text-decoration: none; transition: color 160ms ease, backgro
   .footer-content > div { text-align: center; }
   .footer li a { transform-origin: center; }
 }
+
+/* Utilidad para los spans de data-pagefind-filter en [slug].astro: llevan
+   texto que Pagefind necesita leer (marca de equipo, categoría,
+   subcategoría) pero que no debe verse ni ocupar espacio en la página. Antes
+   se usaba la clase .visually-hidden de Bootstrap (cargado por CDN), pero
+   eso la deja sin efecto si ese CSS externo tarda en llegar o falla — se
+   define aquí también, en el CSS propio del sitio, para no depender de eso. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Buscador global (Pagefind, src/pages/buscar.astro). Pagefind trae su
+   propio CSS (pagefind-ui.css) con sus propios colores por defecto; estas
+   variables son las que esa hoja de estilos lee para pintarse, así que
+   basta con redefinirlas para que el widget combine con la paleta del
+   sitio en vez de dejarle los colores azul/gris genéricos de Pagefind. */
+.pagefind-search {
+  --pagefind-ui-primary: var(--color-secondary);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-white);
+  --pagefind-ui-border: var(--color-border);
+  --pagefind-ui-tag: var(--color-secondary);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 10px;
+  --pagefind-ui-font: var(--font-body);
+  margin-top: .5rem;
+}
+.pagefind-search .pagefind-ui__form { margin-bottom: 1.5rem; }
+.pagefind-search .pagefind-ui__result-link { font-family: var(--font-heading); font-weight: 700; }
+.pagefind-search .pagefind-ui__button {
+  color: var(--color-primary);
+  background: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}

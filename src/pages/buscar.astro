@@ -1,0 +1,79 @@
+---
+// Búsqueda global del catálogo con Pagefind.
+//
+// El buscador que ya existe en cada página de categoría/subcategoría
+// (MachineSearch + machine-filter.js) solo busca dentro de los productos de
+// ESA página, porque filtra un array que Astro ya cargó en el navegador — se
+// vuelve pesado si una sola categoría llega a tener miles de productos, y de
+// todas formas nunca busca en las otras 10 categorías a la vez.
+//
+// Esta página es distinta: usa Pagefind, que arma un índice de búsqueda en
+// el momento del build (`pagefind --site dist`, ver package.json) leyendo el
+// HTML ya generado de cada página de producto (las que tienen
+// data-pagefind-body, ver [slug].astro) y lo sirve en fragmentos pequeños
+// bajo demanda — así el buscador alcanza las ~25.000 referencias sin mandar
+// todo el catálogo al navegador de una sola vez. Los atributos
+// data-pagefind-filter en [slug].astro (marca, marca de equipo, categoría,
+// subcategoría) hacen que el widget de abajo pueda además filtrar los
+// resultados por esos datos.
+//
+// Nota para desarrollo local: el índice de Pagefind solo existe después de
+// `npm run build` (o `npm run preview` sobre ese build) — en `astro dev` esta
+// página carga pero no encuentra resultados, porque el índice todavía no se
+// generó.
+import CatalogLayout from '../layouts/CatalogLayout.astro';
+import { base } from '../utils/base';
+---
+
+<CatalogLayout
+  title="Buscar repuesto | CaterTrack"
+  description="Busca cualquier repuesto del catálogo de CaterTrack por máquina, referencia, marca o categoría."
+>
+  <main id="main-content" aria-label="Buscar en todo el catálogo">
+    <section class="catalog-products">
+      <div class="container">
+        <div class="catalog-section-heading">
+          <div>
+            <span class="catalog-hero__eyebrow">Catálogo completo</span>
+            <h2>Buscar repuesto</h2>
+          </div>
+        </div>
+
+        <div id="pagefind-search" class="pagefind-search"></div>
+
+        <noscript>
+          <p class="catalog-noscript">Activa JavaScript para buscar en el catálogo, o contáctanos por WhatsApp.</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <Fragment slot="scripts">
+    <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
+    <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
+    <script define:vars={{ base }} is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof PagefindUI === 'undefined') return;
+        new PagefindUI({
+          element: '#pagefind-search',
+          bundlePath: `${base}pagefind/`,
+          showImages: true,
+          showSubResults: false,
+          translations: {
+            placeholder: 'Busca por máquina, referencia o nombre del repuesto…',
+            clear_search: 'Limpiar',
+            load_more: 'Cargar más resultados',
+            search_label: 'Buscar en el catálogo',
+            filters_label: 'Filtros',
+            zero_results: 'No encontramos resultados para "[SEARCH_TERM]".',
+            many_results: '[COUNT] resultados para "[SEARCH_TERM]"',
+            one_result: '[COUNT] resultado para "[SEARCH_TERM]"',
+            alt_search: 'No encontramos resultados para "[SEARCH_TERM]". Mostrando resultados para "[DIFFERENT_TERM]" en su lugar.',
+            search_suggestion: 'No encontramos resultados para "[SEARCH_TERM]". Intenta con uno de estos términos:',
+            searching: 'Buscando "[SEARCH_TERM]"...',
+          },
+        });
+      });
+    </script>
+  </Fragment>
+</CatalogLayout>
