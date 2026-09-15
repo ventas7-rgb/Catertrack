@@ -111,7 +111,7 @@ export const productos = [
   "aplicaciones": ["Excavadoras"],
   "descripcion": "Cadena para tren de rodaje de 44 eslabones, funciona en excavadoras Caterpillar. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Referencias: 514-0908 / KM3041.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-5140908-km3041.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "2",
   "referencia": "514-0908 / KM3041"
 },
 {
@@ -124,7 +124,7 @@ export const productos = [
   "aplicaciones": ["309", "309 LC", "310"],
   "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Caterpillar CAT 309, 309 LC y 310. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-309y310.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "4",
   "referencia": ""
 },
 {
@@ -137,7 +137,7 @@ export const productos = [
   "aplicaciones": ["CX130", "CX130B", "CX130D", "CX145"],
   "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Case CX130, CX130B, CX130D y CX145. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-CX130.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "4",
   "referencia": ""
 },
 {
@@ -150,7 +150,7 @@ export const productos = [
   "aplicaciones": ["Excavadoras"],
   "descripcion": "Cadena para tren de rodaje referencias 24100J6485F1 / AT128409 / CR4854 / A15AA43A1. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-cr4854.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "4",
   "referencia": ""
 },
 {
@@ -163,7 +163,7 @@ export const productos = [
   "aplicaciones": ["311D", "311F"],
   "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Cat 311D y 311F. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-311d.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "4",
   "referencia": ""
 },
 {
@@ -176,8 +176,86 @@ export const productos = [
   "aplicaciones": ["312B", "312C", "312D"],
   "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Cat 312B, 312C y 312D. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
   "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-312b.svg",
-  "disponibilidad": "Bajo pedido",
+  "disponibilidad": "5",
   "referencia": ""
+},
+{
+  "slug": "cadena-tren-de-rodaje-Cat-313E-313D2-313F-313FL",
+  "nombre": "Cadena para Excavadoras Cat 313E / 313D2 / 313F / 313FL",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Cat"],
+  "aplicaciones": ["313E", "313D2", "313F", "313FL"],
+  "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Cat 313E, 313D2, 313F y 313FL. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-313e.svg",
+  "disponibilidad": "6",
+  "referencia": ""
+},
+{
+  "slug": "cadena-tren-de-rodaje-Cat-314CL-314C-315F",
+  "nombre": "Cadena para Excavadoras Cat 314CL / 314C / 315F",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Cat"],
+  "aplicaciones": ["314CL", "314C", "315F"],
+  "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Cat 314CL, 314C y 315F. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-314cl.svg",
+  "disponibilidad": "3",
+  "referencia": ""
+},
+{
+  "slug": "cadena-tren-de-rodaje-Doosan-DH120-DH130-DX140",
+  "nombre": "Cadena para Excavadoras Doosan DH120 / DH130 / DX140",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Doosan"],
+  "aplicaciones": ["DH120", "DH130", "DX140"],
+  "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Doosan DH120, DH130 y DX140. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-dh120.svg",
+  "disponibilidad": "3",
+  "referencia": ""
+},
+{
+  "slug": "cadena-tren-de-rodaje-Hitachi-ZX130-ZX130LC",
+  "nombre": "Cadena para Excavadoras Hitachi ZX130 / ZX130LC",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Hitachi"],
+  "aplicaciones": ["ZX130", "ZX130LC"],
+  "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Hitachi ZX130 y ZX130LC. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-zx130.svg",
+  "disponibilidad": "3",
+  "referencia": ""
+},
+{
+  "slug": "cadena-tren-de-rodaje-Sandvik-DI600-Titon600",
+  "nombre": "Cadena para Excavadoras Sandvik DI600 / Titon600",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Sandvik"],
+  "aplicaciones": ["DI600", "Titon600"],
+  "descripcion": "Cadena para tren de rodaje funciona en las excavadoras Sandvik DI600 y Titon600. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Si no conoce la referencia de la cadena, puede consultarnos indicando el modelo y número de serie de su equipo.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-di600.svg",
+  "disponibilidad": "3",
+  "referencia": ""
+},
+{
+  "slug": "cadena-tren-para-excavadoras-1764870-176-4870-4450555-4450555",
+  "nombre": "Cadena para excavadoras referencia 176-4870 / 445-0555",
+  "categoria": "tren-de-rodaje",
+  "subcategoria": "cadena",
+  "marca": "VemaTRACK",
+  "marcasEquipo": ["Cat"],
+  "aplicaciones": ["Excavadoras"],
+  "descripcion": "Cadena para tren de rodaje de 44 eslabones, funciona en excavadoras Caterpillar. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste. Referencias: 176-4870 / 445-0555.",
+  "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-1764870.svg",
+  "disponibilidad": "2",
+  "referencia": "176-4870 / 445-0555"
 },
   
 ];
