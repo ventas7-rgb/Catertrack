@@ -402,6 +402,7 @@ export const productos = [
     "descripcion": "Cadena tren de rodaje, funciona en excavadoras 159-1579/1591579/9w9353/9w-9353/Cr5350/Cr5014/Cr6288/Cr6003/VE1569B849. Fabricada en acero para trabajos de alta exigencia y resistencia al desgaste.",
     "foto": "https://pub-b292fed2f5f049b0bed95ee1480db59b.r2.dev/Cadenas/cadena-cr5350.svg",
     "disponibilidad": "20",
-    "referencia": ""
+    "referencia": ["159-1579","9w-9353","Cr5350","VE1569B849"]
   },
 ];
+
